@@ -75,8 +75,8 @@ namespace HelloWorld
             string strPrice = price.ToString("C");
 
             // is string empty?
-            string input = null;
-            int length = input.Length;
+            string input = "";
+            //int length = input.Length;
             bool isEmpty;
 
             // 1.
@@ -163,6 +163,31 @@ namespace HelloWorld
                     return result;
 
                 Console.WriteLine("Enter a valid decimal value");
+            };
+        }
+
+        private static void PlayWithArrays()
+        {
+            //int size = 100;
+            int[] prices = new int[100];
+            for (var index = 0; index < prices.Length; ++index)
+            {
+                prices[index] = index + 1;
+            };
+
+            DisplayArray(prices);
+
+            var input = "field1,field2,field3;field4,,field5";
+            string[] fields = input.Split(',', ';');
+        }
+
+        private static void DisplayArray( int[] values/*, int count*/ )
+        {
+            //for (var index = 0; index < values.Length; ++index)
+            foreach (var item in values)
+            {
+                //Console.WriteLine(values[index]);
+                Console.WriteLine(item);
             };
         }
 
