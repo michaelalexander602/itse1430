@@ -25,6 +25,20 @@ namespace GameManager.Host.Winforms
 
             game.Name = "kh3";
             game.Price = 59.99M;
+
+            game.Validate();
+
+
+        }
+
+        private void OnFileExit( object sender, EventArgs e )
+        {
+            Close();
+        }
+
+        private void OnHelpAbout( object sender, EventArgs e )
+        {
+            MessageBox.Show("Help");
         }
     }
 }
