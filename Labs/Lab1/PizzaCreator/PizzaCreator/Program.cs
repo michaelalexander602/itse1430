@@ -27,7 +27,8 @@ namespace PizzaCreator
                 Console.WriteLine("2. Modify Order");
                 Console.WriteLine("3. Display Order");
                 Console.WriteLine("4. Quit");
-                Console.Write("Make your selection by entering a number (1-4): ");
+                Console.WriteLine("\nCurrent total: {0:C}", pizza.CalcPrice());
+                Console.Write("\nMake your selection by entering a number (1-4): ");
 
                 while ((!int.TryParse(Console.ReadLine(), out choice)) || choice < 1 || choice > 4)
                 {
@@ -64,6 +65,8 @@ namespace PizzaCreator
                     else
                     {
                         Console.WriteLine("An order has not been made.");
+                        Console.Write("\nPress [Enter] to continue. ");
+                        Console.ReadLine();
                     }
                 }
                 else if(choice == 3)
@@ -75,6 +78,8 @@ namespace PizzaCreator
                     else
                     {
                         Console.WriteLine("An order has not been made.");
+                        Console.Write("\nPress [Enter] to continue. ");
+                        Console.ReadLine();
                     }
                 }
 
