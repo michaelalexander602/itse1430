@@ -14,36 +14,41 @@ namespace PizzaCreator
 {
     class Pizza
     {
-        double Price;
-        string Size;
-        string Sauce;
-        bool HasBacon;
-        bool HasHam;
-        bool HasPepperoni;
-        bool HasSausage;
-        bool HasBOlives;
-        bool HasMushrooms;
-        bool HasOnions;
-        bool HasPeppers;
-        bool HasExtraCheese;
-        bool IsDelivery;
+        public double SmallPrice = 5.00;
+        public double MedPrice = 6.25;
+        public double LargePrice = 8.75;
+        public double MeatPrice = 0.75;
+        public double VegPrice = 0.25;
+        public double SaucePrice = 1.00;
+        public double ExtraCheesePrice = 1.25;
+        public double DeliveryPrice = 2.50;
+        public double Price;
+        public string Size = "";
+        public string Sauce;
+        public bool HasBacon;
+        public bool HasHam;
+        public bool HasPepperoni;
+        public bool HasSausage;
+        public bool HasBOlives;
+        public bool HasMushrooms;
+        public bool HasOnions;
+        public bool HasPeppers;
+        public bool HasExtraCheese;
+        public bool IsDelivery;
 
         public void SetSize(int choice)
         {
-            if(choice == 1)
+            if (choice == 1)
             {
                 Size = "Small";
-                Price += 5.00;
             }
-            else if(choice == 2)
+            else if (choice == 2)
             {
                 Size = "Medium";
-                Price += 6.25;
             }
             else if (choice == 3)
             {
                 Size = "Large";
-                Price += 8.75;
             }
             else
             {
@@ -54,18 +59,16 @@ namespace PizzaCreator
         public void AddMeats(int choice)
         {
             // Bacon
-            if(choice == 1)
+            if (choice == 1)
             {
-                if(HasBacon == false)
+                if (HasBacon == false)
                 {
                     Console.WriteLine("Bacon added.");
-                    Price += 0.75;
                     HasBacon = true;
                 }
                 else
                 {
                     Console.WriteLine("Bacon removed.");
-                    Price -= 0.75;
                     HasBacon = false;
                 }
             }
@@ -76,13 +79,11 @@ namespace PizzaCreator
                 if (HasHam == false)
                 {
                     Console.WriteLine("Ham added.");
-                    Price += 0.75;
                     HasHam = true;
                 }
                 else
                 {
                     Console.WriteLine("Ham removed.");
-                    Price -= 0.75;
                     HasHam = false;
                 }
             }
@@ -93,13 +94,11 @@ namespace PizzaCreator
                 if (HasPepperoni == false)
                 {
                     Console.WriteLine("Pepperoni added.");
-                    Price += 0.75;
                     HasPepperoni = true;
                 }
                 else
                 {
                     Console.WriteLine("Pepperoni removed.");
-                    Price -= 0.75;
                     HasPepperoni = false;
                 }
             }
@@ -110,13 +109,11 @@ namespace PizzaCreator
                 if (HasSausage == false)
                 {
                     Console.WriteLine("Sausage added.");
-                    Price += 0.75;
                     HasSausage = true;
                 }
                 else
                 {
                     Console.WriteLine("Sausage removed.");
-                    Price -= 0.75;
                     HasSausage = false;
                 }
             }
@@ -130,13 +127,11 @@ namespace PizzaCreator
                 if (HasBOlives == false)
                 {
                     Console.WriteLine("Black Olives added.");
-                    Price += 0.50;
                     HasBOlives = true;
                 }
                 else
                 {
                     Console.WriteLine("Black Olives removed.");
-                    Price -= 0.50;
                     HasBOlives = false;
                 }
             }
@@ -147,13 +142,11 @@ namespace PizzaCreator
                 if (HasMushrooms == false)
                 {
                     Console.WriteLine("Mushrooms added.");
-                    Price += 0.50;
                     HasMushrooms = true;
                 }
                 else
                 {
                     Console.WriteLine("Mushrooms removed.");
-                    Price -= 0.50;
                     HasMushrooms = false;
                 }
             }
@@ -164,13 +157,11 @@ namespace PizzaCreator
                 if (HasOnions == false)
                 {
                     Console.WriteLine("Onions added.");
-                    Price += 0.50;
                     HasOnions = true;
                 }
                 else
                 {
                     Console.WriteLine("Onions removed.");
-                    Price -= 0.50;
                     HasOnions = false;
                 }
             }
@@ -181,13 +172,11 @@ namespace PizzaCreator
                 if (HasPeppers == false)
                 {
                     Console.WriteLine("Peppers added.");
-                    Price += 0.50;
                     HasPeppers = true;
                 }
                 else
                 {
                     Console.WriteLine("Peppers removed.");
-                    Price -= 0.50;
                     HasPeppers = false;
                 }
             }
@@ -195,7 +184,7 @@ namespace PizzaCreator
 
         public void AddSauce(int choice)
         {
-            if(choice == 1)
+            if (choice == 1)
             {
                 Sauce = "Traditional Sauce";
             }
@@ -203,40 +192,106 @@ namespace PizzaCreator
             if (choice == 2)
             {
                 Sauce = "Garlic Sauce";
-                Price += 1.00;
             }
 
             if (choice == 3)
             {
                 Sauce = "Oregano Sauce";
-                Price += 1.00;
             }
         }
 
         public void AddCheese(int choice)
         {
-            if(choice == 1)
+            if (choice == 1)
             {
                 HasExtraCheese = false;
             }
             if (choice == 2)
             {
                 HasExtraCheese = true;
-                Price += 1.25;
             }
         }
 
         public void PickDelivery(int choice)
         {
-            if(choice == 1)
+            if (choice == 1)
             {
                 IsDelivery = false;
             }
             else
             {
                 IsDelivery = true;
-                Price += 2.50;
             }
+        }
+
+        public double CalcPrice()
+        {
+            if(Size == "Small")
+            {
+                Price += SmallPrice;
+            }
+            else if (Size == "Medium")
+            {
+                Price += MedPrice;
+            }
+            else if (Size == "Large")
+            {
+                Price += LargePrice;
+            }
+ 
+            // add meat prices
+            if(HasBacon == true)
+            {
+                Price += MeatPrice;
+            }
+            if (HasHam == true)
+            {
+                Price += MeatPrice;
+            }
+            if (HasPepperoni == true)
+            {
+                Price += MeatPrice;
+            }
+            if (HasSausage == true)
+            {
+                Price += MeatPrice;
+            }
+
+            // add veggie prices
+            if (HasBOlives == true)
+            {
+                Price += VegPrice;
+            }
+            if (HasMushrooms == true)
+            {
+                Price += VegPrice;
+            }
+            if (HasOnions == true)
+            {
+                Price += VegPrice;
+            }
+            if (HasPeppers == true)
+            {
+                Price += VegPrice;
+            }
+
+            // sauce price
+            if (Sauce == "Garlic Sauce" || Sauce == "Oregano Sauce")
+            {
+                Price += SaucePrice;
+            }
+
+            if (HasExtraCheese == true)
+            {
+                Price += ExtraCheesePrice;
+            }
+
+            if (IsDelivery == true)
+            {
+                Price += DeliveryPrice;
+            }
+
+            return Price;
         }
     }
 }
