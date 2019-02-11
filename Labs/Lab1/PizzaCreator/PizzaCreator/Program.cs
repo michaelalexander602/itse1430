@@ -22,6 +22,7 @@ namespace PizzaCreator
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("1. New Order");
                 Console.WriteLine("2. Modify Order");
                 Console.WriteLine("3. Display Order");
@@ -86,11 +87,12 @@ namespace PizzaCreator
             int choice;
 
             // set pizza size
+            Console.Clear();
             {
                 Console.WriteLine("Pick the size of your pizza:");
-                Console.WriteLine("1. Small ($5.00)");
-                Console.WriteLine("2. Medium ($6.25)");
-                Console.WriteLine("3. Large ($8.75)");
+                Console.WriteLine("1. Small ({0:C})", pizza.SmallPrice);
+                Console.WriteLine("2. Medium ({0:C})", pizza.MedPrice);
+                Console.WriteLine("3. Large ({0:C})", pizza.LargePrice);
                 Console.Write("Enter a number (1-3): ");
 
                 while ((!int.TryParse(Console.ReadLine(), out choice)) || choice < 1 || choice > 3)
@@ -101,8 +103,9 @@ namespace PizzaCreator
             }
 
             // add/remove meats
+            Console.Clear();
             {
-                Console.WriteLine("Add/Remove the meats of your choice for " + pizza.MeatPrice + " each:");
+                Console.WriteLine("Add/Remove the meats of your choice for {0:C} each:", pizza.MeatPrice);
                 Console.WriteLine("1. Bacon");
                 Console.WriteLine("2. Ham");
                 Console.WriteLine("3. Pepperoni");
@@ -122,8 +125,9 @@ namespace PizzaCreator
             }
 
             // add/remove veggies
+            Console.Clear();
             {
-                Console.WriteLine("Add/Remove the veggies of your choice for $0.75 each:");
+                Console.WriteLine("Add/Remove the veggies of your choice for {0:C} each:", pizza.VegPrice);
                 Console.WriteLine("1. Black olives");
                 Console.WriteLine("2. Mushrooms");
                 Console.WriteLine("3. Onions");
@@ -143,11 +147,12 @@ namespace PizzaCreator
             }
 
             // pick sauce
+            Console.Clear();
             {
                 Console.WriteLine("Select the sauce of your choice: ");
                 Console.WriteLine("1. Traditional (FREE)");
-                Console.WriteLine("2. Garlic (+ $1.00)");
-                Console.WriteLine("3. Oregano (+ $1.00)");
+                Console.WriteLine("2. Garlic (+ {0:C})", pizza.SaucePrice);
+                Console.WriteLine("3. Oregano (+ {0:C})", pizza.SaucePrice);
                 Console.Write("Enter a number (1-3): ");
 
                 while ((!int.TryParse(Console.ReadLine(), out choice)) || choice < 1 || choice > 3)
@@ -158,10 +163,11 @@ namespace PizzaCreator
             }
 
             // set cheese amount
+            Console.Clear();
             {
                 Console.WriteLine("Choose the amount of cheese you want: ");
                 Console.WriteLine("1. Regular (FREE)");
-                Console.WriteLine("2. Extra (+ $1.00)");
+                Console.WriteLine("2. Extra (+ {0:C})", pizza.ExtraCheesePrice);
                 Console.Write("Enter a number (1-2): ");
 
                 while ((!int.TryParse(Console.ReadLine(), out choice)) || choice < 1 || choice > 2)
@@ -172,10 +178,11 @@ namespace PizzaCreator
             }
 
             // pick delivery method
+            Console.Clear();
             {
                 Console.WriteLine("Choose your desired delivery method ");
                 Console.WriteLine("1. Pick up (FREE)");
-                Console.WriteLine("2. Delivery (+ $1.00)");
+                Console.WriteLine("2. Delivery (+ {0:C})", pizza.DeliveryPrice);
                 Console.Write("Enter a number (1-2): ");
 
                 while ((!int.TryParse(Console.ReadLine(), out choice)) || choice < 1 || choice > 2)
@@ -191,23 +198,25 @@ namespace PizzaCreator
         static Pizza ModifyOrder(Pizza pizza)
         {
             int choice;
+            Console.Clear();
 
             // change size
+            Console.Clear();
             {
                 Console.WriteLine("Pick the size of your pizza:");
-                Console.Write("1. Small ($5.00)");
+                Console.Write("1. Small ({0:C})", pizza.SmallPrice);
                 if (pizza.Size == "Small")
                 {
                     Console.Write(" (selected)");
                 }
 
-                Console.Write("\n2. Medium ($6.25)");
+                Console.Write("\n2. Medium ({0:C})", pizza.MedPrice);
                 if (pizza.Size == "Medium")
                 {
                     Console.Write(" (selected)");
                 }
 
-                Console.Write("\n3. Large ($8.75)");
+                Console.Write("\n3. Large ({0:C})", pizza.LargePrice);
                 if (pizza.Size == "Large")
                 {
                     Console.Write(" (selected)");
@@ -222,8 +231,9 @@ namespace PizzaCreator
             }
 
             // change meats
+            Console.Clear();
             {
-                Console.WriteLine("Add/Remove the meats of your choice for " + pizza.MeatPrice + " each:");
+                Console.WriteLine("Add/Remove the meats of your choice for {0:C} each:", pizza.MeatPrice);
                 Console.WriteLine("1. Bacon");
                 Console.WriteLine("2. Ham");
                 Console.WriteLine("3. Pepperoni");
@@ -243,8 +253,9 @@ namespace PizzaCreator
             }
 
             // change veggies
+            Console.Clear();
             {
-                Console.WriteLine("Add/Remove the veggies of your choice for $0.75 each:");
+                Console.WriteLine("Add/Remove the veggies of your choice for {0:C} each:", pizza.VegPrice);
                 Console.WriteLine("1. Black olives");
                 Console.WriteLine("2. Mushrooms");
                 Console.WriteLine("3. Onions");
@@ -264,6 +275,7 @@ namespace PizzaCreator
             }
 
             // change sauce
+            Console.Clear();
             {
                 Console.WriteLine("Select the sauce of your choice: ");
                 Console.Write("1. Traditional (FREE)");
@@ -271,12 +283,12 @@ namespace PizzaCreator
                 {
                     Console.Write(" (selected)");
                 }
-                Console.Write("\n2. Garlic (+ $1.00)");
+                Console.Write("\n2. Garlic (+ {0:C})", pizza.SaucePrice);
                 if (pizza.Sauce == "Garlic Sauce")
                 {
                     Console.Write(" (selected)");
                 }
-                Console.Write("\n3. Oregano (+ $1.00)");
+                Console.Write("\n3. Oregano (+ {0:C})", pizza.SaucePrice);
                 if (pizza.Sauce == "Oregano Sauce")
                 {
                     Console.Write(" (selected)");
@@ -291,6 +303,7 @@ namespace PizzaCreator
             }
 
             // change cheese amount
+            Console.Clear();
             {
                 Console.WriteLine("Choose the amount of cheese you want: ");
                 Console.Write("1. Regular (FREE)");
@@ -298,8 +311,8 @@ namespace PizzaCreator
                 {
                     Console.Write(" (selected)");
                 }
-                Console.WriteLine("\n2. Extra (+ $1.00)");
-                if (pizza.HasExtraCheese == false)
+                Console.Write("\n2. Extra (+ {0:C})", pizza.ExtraCheesePrice);
+                if (pizza.HasExtraCheese == true)
                 {
                     Console.Write(" (selected)");
                 }
@@ -313,6 +326,7 @@ namespace PizzaCreator
             }
 
             // change delivery method
+            Console.Clear();
             {
                 Console.WriteLine("Choose your desired delivery method ");
                 Console.Write("1. Pick up (FREE)");
@@ -320,7 +334,7 @@ namespace PizzaCreator
                 {
                     Console.Write(" (selected)");
                 }
-                Console.Write("\n2. Delivery (+ $1.00)");
+                Console.Write("\n2. Delivery (+ {0:C})", pizza.DeliveryPrice);
                 if (pizza.IsDelivery == true)
                 {
                     Console.Write("(selected)");
@@ -339,28 +353,34 @@ namespace PizzaCreator
 
         static void ViewOrder(Pizza pizza)
         {
+            Console.Clear();
+            string item;
+
             // display size
-            if(pizza.Size == "Small")
+            item = (pizza.Size + " Pizza:").PadRight(20);
+            if (pizza.Size == "Small")
             {
-                Console.WriteLine(pizza.Size + " Pizza: $5.00");
+                Console.WriteLine(item + "{0:C}", pizza.SmallPrice);
             }
             else if(pizza.Size == "Medium")
             {
-                Console.WriteLine(pizza.Size + " Pizza: $6.25");
+                Console.WriteLine(item + "{0:C}", pizza.MedPrice);
             }
             else if (pizza.Size == "Large")
             {
-                Console.WriteLine(pizza.Size + " Pizza: $8.75");
+                Console.WriteLine(item + "{0:C}", pizza.LargePrice);
             }
 
             // display delivery method
             if (pizza.IsDelivery)
             {
-                Console.WriteLine("Delivery: $2.50");
+                item = ("Delivery:").PadRight(20);
+                Console.WriteLine(item + "{0:C}", pizza.DeliveryPrice);
             }
             else
             {
-                Console.WriteLine("Take Out: FREE");
+                item = ("Take Out").PadRight(20);
+                Console.WriteLine(item + "FREE");
             }
 
             // display meats
@@ -369,24 +389,28 @@ namespace PizzaCreator
             {
                 if (pizza.HasBacon)
                 {
-                    Console.WriteLine("\tBacon: $0.75");
+                    item = ("   Bacon:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.MeatPrice);
                 }
                 if (pizza.HasHam)
                 {
-                    Console.WriteLine("\tHam: $0.75");
+                    item = ("   Ham:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.MeatPrice);
                 }
                 if (pizza.HasPepperoni)
                 {
-                    Console.WriteLine("\tPepperoni: $0.75");
+                    item = ("   Pepperoni:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.MeatPrice);
                 }
                 if (pizza.HasSausage)
                 {
-                    Console.WriteLine("\tPepperoni: $0.75");
+                    item = ("   Sausage:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.MeatPrice);
                 }
             }
             else
             {
-                Console.WriteLine("(None)");
+                Console.WriteLine("   (None)");
             }
 
             // display veggies
@@ -395,39 +419,59 @@ namespace PizzaCreator
             {
                 if (pizza.HasBOlives)
                 {
-                    Console.WriteLine("\tBlack Olives: $0.50");
+                    item = ("   Black Olives:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.VegPrice);
                 }
                 if (pizza.HasMushrooms)
                 {
-                    Console.WriteLine("\tMushrooms: $0.50");
+                    item = ("   Mushrooms:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.VegPrice);
                 }
                 if (pizza.HasOnions)
                 {
-                    Console.WriteLine("\tOnions: $0.50");
+                    item = ("   Onions:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.VegPrice);
                 }
                 if (pizza.HasPeppers)
                 {
-                    Console.WriteLine("\tPeppers: $0.50");
+                    item = ("   Peppers:").PadRight(20);
+                    Console.WriteLine(item + "{0:C}", pizza.VegPrice);
                 }
             }
             else
             {
-                Console.WriteLine("(None)");
+                Console.WriteLine("   (None)");
             }
 
             // display sauce
+            item = (pizza.Sauce + ":").PadRight(20);
             if(pizza.Sauce == "Traditional Sauce")
             {
-                Console.WriteLine(pizza.Sauce + ": FREE");
+                Console.WriteLine(item + "FREE");
             }
             else if(pizza.Sauce == "Garlic Sauce" || pizza.Sauce == "Oregano Sauce")
             {
-                Console.WriteLine(pizza.Sauce + ": $1.00");
+                Console.WriteLine(item + "{0:C}", pizza.SaucePrice);
             }
 
+            // display cheese
+            if (pizza.HasExtraCheese)
+            {
+                item = ("Extra Cheese:").PadRight(20);
+                Console.WriteLine(item + "{0:C}", pizza.ExtraCheesePrice);
+            }
+            //else
+            //{
+            //    Console.WriteLine("Regular Cheese: FREE");
+            //}
+
             // display total
-            Console.WriteLine("-----------------------");
-            Console.WriteLine("Total: {0:C}", pizza.CalcPrice());
+            Console.WriteLine("-------------------------");
+            item = ("Total:").PadRight(20);
+            Console.WriteLine(item + "{0:C}", pizza.CalcPrice());
+
+            Console.Write("\nPress [Enter] to continue. ");
+            Console.ReadLine();
         }
     }
 }

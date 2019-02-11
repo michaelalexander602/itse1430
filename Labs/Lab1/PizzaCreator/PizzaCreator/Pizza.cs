@@ -18,7 +18,7 @@ namespace PizzaCreator
         public double MedPrice = 6.25;
         public double LargePrice = 8.75;
         public double MeatPrice = 0.75;
-        public double VegPrice = 0.25;
+        public double VegPrice = 0.50;
         public double SaucePrice = 1.00;
         public double ExtraCheesePrice = 1.25;
         public double DeliveryPrice = 2.50;
@@ -226,6 +226,7 @@ namespace PizzaCreator
 
         public double CalcPrice()
         {
+            Price = 0.0;
             if(Size == "Small")
             {
                 Price += SmallPrice;
