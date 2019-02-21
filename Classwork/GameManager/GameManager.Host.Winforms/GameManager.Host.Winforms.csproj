@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67B5A80D-7872-41C2-B88D-21784A00AB00}</ProjectGuid>
+    <ProjectGuid>{20D9555F-82BE-46AA-886B-286D02EC7BF9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>GameManager.Host.Winforms</RootNamespace>
     <AssemblyName>GameManager.Host.Winforms</AssemblyName>
@@ -61,7 +61,7 @@
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameManager\GameManager.csproj">
-      <Project>{513030bf-4ccd-4322-a548-61185ac46c72}</Project>
+      <Project>{a2fd1153-8361-4388-8234-0f9463049ae5}</Project>
       <Name>GameManager</Name>
     </ProjectReference>
   </ItemGroup>

@@ -26,8 +26,7 @@ namespace GameManager.Host.Winforms
 
         public string AssemblyTitle
         {
-            get
-            {
+            get {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
                 if (attributes.Length > 0)
                 {
@@ -43,16 +42,14 @@ namespace GameManager.Host.Winforms
 
         public string AssemblyVersion
         {
-            get
-            {
+            get {
                 return Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
 
         public string AssemblyDescription
         {
-            get
-            {
+            get {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
                 if (attributes.Length == 0)
                 {
@@ -64,8 +61,7 @@ namespace GameManager.Host.Winforms
 
         public string AssemblyProduct
         {
-            get
-            {
+            get {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 if (attributes.Length == 0)
                 {
@@ -77,8 +73,7 @@ namespace GameManager.Host.Winforms
 
         public string AssemblyCopyright
         {
-            get
-            {
+            get {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 if (attributes.Length == 0)
                 {
@@ -90,8 +85,7 @@ namespace GameManager.Host.Winforms
 
         public string AssemblyCompany
         {
-            get
-            {
+            get {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
                 if (attributes.Length == 0)
                 {

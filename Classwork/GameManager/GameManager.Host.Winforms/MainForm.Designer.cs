@@ -1,7 +1,6 @@
 ﻿namespace GameManager.Host.Winforms
 {
     partial class MainForm
-
     {
         /// <summary>
         /// Required designer variable.
@@ -84,14 +83,16 @@
             // _miGameAdd
             // 
             this._miGameAdd.Name = "_miGameAdd";
-            this._miGameAdd.Size = new System.Drawing.Size(107, 22);
+            this._miGameAdd.ShortcutKeys = System.Windows.Forms.Keys.Insert;
+            this._miGameAdd.Size = new System.Drawing.Size(180, 22);
             this._miGameAdd.Text = "&Add";
             this._miGameAdd.Click += new System.EventHandler(this.OnGameAdd);
             // 
             // _miGameEdit
             // 
             this._miGameEdit.Name = "_miGameEdit";
-            this._miGameEdit.Size = new System.Drawing.Size(107, 22);
+            this._miGameEdit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Insert)));
+            this._miGameEdit.Size = new System.Drawing.Size(180, 22);
             this._miGameEdit.Text = "&Edit";
             this._miGameEdit.Click += new System.EventHandler(this.OnGameEdit);
             // 
@@ -103,7 +104,8 @@
             // _miGameDelete
             // 
             this._miGameDelete.Name = "_miGameDelete";
-            this._miGameDelete.Size = new System.Drawing.Size(107, 22);
+            this._miGameDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this._miGameDelete.Size = new System.Drawing.Size(180, 22);
             this._miGameDelete.Text = "&Delete";
             this._miGameDelete.Click += new System.EventHandler(this.OnGameDelete);
             // 
@@ -130,7 +132,8 @@
             this._listGames.Name = "_listGames";
             this._listGames.Size = new System.Drawing.Size(800, 426);
             this._listGames.TabIndex = 1;
-            this._listGames.SelectedIndexChanged += new System.EventHandler(this._listGames_SelectedIndexChanged);
+            this._listGames.SelectedIndexChanged += new System.EventHandler(this.OnGameSelected);
+            this._listGames.DoubleClick += new System.EventHandler(this.OnGameEdit);
             // 
             // MainForm
             // 
@@ -155,11 +158,11 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _miFileExit;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _miGameAdd;
         private System.Windows.Forms.ToolStripMenuItem _miGameEdit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem _miGameDelete;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _miHelpAbout;
         private System.Windows.Forms.ListBox _listGames;
     }

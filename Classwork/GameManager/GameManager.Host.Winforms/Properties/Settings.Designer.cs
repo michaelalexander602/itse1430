@@ -21,8 +21,7 @@ namespace GameManager.Host.Winforms.Properties
 
         public static Settings Default
         {
-            get
-            {
+            get {
                 return defaultInstance;
             }
         }

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Game Manager")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Michael Alexander")]
+[assembly: AssemblyCompany("Your Name")]
 [assembly: AssemblyProduct("Game Manager")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("67b5a80d-7872-41c2-b88d-21784a00ab00")]
+[assembly: Guid("20d9555f-82be-46aa-886b-286d02ec7bf9")]
 
 // Version information for an assembly consists of the following four values:
 //

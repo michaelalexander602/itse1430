@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameManager
 {
     /// <summary>Represents a game.</summary>
-     public class Game
+    public class Game
     {
         /// <summary>Name of the game.</summary>
         public string Name
@@ -26,13 +22,19 @@ namespace GameManager
         }
         private string _publisher = "";
 
-        // calculated property
+        //Calculated property
         public bool IsCoolGame
         {
             get { return Publisher != "EA"; }
         }
 
-        // auto property
+        //Setter only
+        //public string Password
+        //{
+        //    set { }
+        //}
+
+        //Auto property
         public decimal Price { get; set; }
 
         //public decimal Price
@@ -42,24 +44,45 @@ namespace GameManager
         //}
         //private decimal _price;
 
-        public bool Owned { get; set; } = true;     //initializes to true by default
+        public bool Owned { get; set; } = true;
 
         public bool Completed { get; set; }
 
-        // mixed accessibility
+        //Mixed accessibility
         public double Rate
         {
             get;
             internal set;
         }
 
+        public void Foo ()
+        {
+            //NOT DETERMINISTIC - should have been a method
+            var now = DateTime.Now;
+        }
+        
         //Can init the data as well
+        //public string[] Genres { get; set; }
+
+        // Don't use array properties because they require cloning
+        // and are inefficient
+        //public string[] Genres
+        //{
+        //    get 
+        //    {
+        //        var temp = new string[_genres.Length];
+        //        Array.Copy(_genres, temp, _genres.Length);
+        //        return temp;
+        //    }
+        //}
+        //private string[] _genres;
+        
         //public string[] genres = new string[10];
         //private decimal realPrice = Price;
 
         /// <summary>Validates the object.</summary>
         /// <returns>true if valid or false otherwise.</returns>
-        public bool Validate( /* Game this */ )
+        public bool Validate ( /* Game this */ )
         {
             //Redundant dude
             //var str = this.Name;
