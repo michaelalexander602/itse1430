@@ -6,7 +6,7 @@ namespace GameManager.Host.Winforms
     /// <summary>Allows adding or editing a game.</summary>
     public partial class GameForm : Form
     {
-        public GameForm()
+        public GameForm() //: base()
         {
             InitializeComponent();
         }
@@ -61,11 +61,15 @@ namespace GameManager.Host.Winforms
             return game;
         }
 
-        private void GameForm_Load( object sender, EventArgs e )
+        protected override void OnLoad( EventArgs e )
         {
+            base.OnLoad(e);
+
             //Init UI if editing a game
             if (Game != null)
                 LoadData(Game);
         }
+
+        
     }
 }

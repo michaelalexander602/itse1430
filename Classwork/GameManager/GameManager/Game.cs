@@ -5,6 +5,25 @@ namespace GameManager
     /// <summary>Represents a game.</summary>
     public class Game
     {
+        //Ctors
+        public Game()
+        {
+            // complex initialization
+            var x = 1 + 2;
+        }
+
+        // Contructor chaining
+        public Game (string name) : this(name, 0)
+        {
+            //Name = name;
+        }
+
+        public Game( string name, decimal price )
+        {
+            Name = name;
+            Price = price;
+        }
+
         /// <summary>Name of the game.</summary>
         public string Name
         {
