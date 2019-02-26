@@ -89,7 +89,7 @@ namespace GameManager.Host.Winforms
                     _listGames.Items.Add(game);
             };
         }
-
+        
         private void OnGameAdd ( object sender, EventArgs e )
         {
             //Display UI
@@ -199,6 +199,16 @@ namespace GameManager.Host.Winforms
         private void OnGameSelected ( object sender, EventArgs e )
         {
 
+        }
+
+        protected override void OnFormClosing( FormClosingEventArgs e )
+        {
+            if (MessageBox.Show(this, "Are you sure?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+                return;
+            }
+            base.OnFormClosing(e);
         }
     }
 }

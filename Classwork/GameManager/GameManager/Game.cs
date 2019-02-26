@@ -79,7 +79,12 @@ namespace GameManager
             //NOT DETERMINISTIC - should have been a method
             var now = DateTime.Now;
         }
-        
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
         //Can init the data as well
         //public string[] Genres { get; set; }
 
@@ -95,7 +100,7 @@ namespace GameManager
         //    }
         //}
         //private string[] _genres;
-        
+
         //public string[] genres = new string[10];
         //private decimal realPrice = Price;
 
