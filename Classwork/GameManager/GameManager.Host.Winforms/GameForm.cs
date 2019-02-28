@@ -17,8 +17,19 @@ namespace GameManager.Host.Winforms
         //Called when the user saves the game
         private void OnSave( object sender, EventArgs e )
         {
-            Game = SaveData();
+            if (!ValidateChildren())
+                return;
 
+            var game = SaveData();
+
+            //Validate at business level
+            if (!game.Validate())
+            {
+                MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
+                return;
+            };
+
+            Game = game;
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -26,12 +37,15 @@ namespace GameManager.Host.Winforms
         //Called when the user cancels the add/edit
         private void OnCancel( object sender, EventArgs e )
         {
-            DialogResult = DialogResult.Cancel;             
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        private decimal ReadDecimal ( TextBox control )
+        private decimal ReadDecimal( TextBox control )
         {
+            if (control.Text.Length == 0)
+                return 0;
+
             if (Decimal.TryParse(control.Text, out var value))
                 return value;
 
@@ -39,37 +53,72 @@ namespace GameManager.Host.Winforms
         }
 
         //Loads UI with game
-        private void LoadData ( Game game )
+        private void LoadData( Game game )
         {
             _txtName.Text = game.Name;
-            _txtPublisher.Text = game.Publisher;
+            _txtDescription.Text = game.Description;
             _txtPrice.Text = game.Price.ToString();
             _cbOwned.Checked = game.Owned;
             _cbCompleted.Checked = game.Completed;
         }
 
         //Saves UI into new game
-        private Game SaveData ()
+        private Game SaveData()
         {
             var game = new Game();
             game.Name = _txtName.Text;
-            game.Publisher = _txtPublisher.Text;
+            game.Description = _txtDescription.Text;
             game.Price = ReadDecimal(_txtPrice);
             game.Owned = _cbOwned.Checked;
             game.Completed = _cbCompleted.Checked;
 
+            //Demoing ctor
+            var game2 = new Game(_txtName.Text, ReadDecimal(_txtPrice));
+
             return game;
         }
 
+        //Defined in type
+        //Derived types may override and change it
+        protected virtual void CanBeChanged() { }
+
+        //Overriding a virtual member in Form
         protected override void OnLoad( EventArgs e )
         {
+            //this.OnLoad(e);
             base.OnLoad(e);
 
             //Init UI if editing a game
             if (Game != null)
                 LoadData(Game);
+
+            ValidateChildren();
         }
 
-        
+        private void OnValidateName( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var tb = sender as TextBox;
+
+            if (tb.Text.Length == 0)
+            {
+                _errors.SetError(tb, "Name is required");
+                e.Cancel = true;
+            } else
+                _errors.SetError(tb, "");
+                
+        }
+
+        private void OnValidatePrice( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var tb = sender as TextBox;
+
+            var price = ReadDecimal(tb);
+            if (price < 0)
+            {
+                _errors.SetError(tb, "Price must be <= 0");
+                e.Cancel = true;
+            } else
+                _errors.SetError(tb, "");
+        }
     }
 }

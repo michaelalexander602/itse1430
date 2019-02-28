@@ -34,17 +34,17 @@ namespace GameManager
         private string _name = "";
 
         /// <summary>Publisher of the game.</summary>
-        public string Publisher
+        public string Description
         {
-            get { return _publisher ?? ""; }
-            set { _publisher = value; }
+            get { return _description ?? ""; }
+            set { _description = value; }
         }
-        private string _publisher = "";
+        private string _description = "";
 
         //Calculated property
         public bool IsCoolGame
         {
-            get { return Publisher != "EA"; }
+            get { return Description != "EA"; }
         }
 
         //Setter only
