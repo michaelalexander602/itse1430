@@ -43,6 +43,13 @@ namespace GameManager
             if (existing >= 0)
                 throw new Exception("Game must be unique.");
 
+            //Dummy test
+            if (String.Compare(game.Name, "Anthem", true) == 0)
+                throw new InvalidOperationException("Only good games are allowed here.");
+            if (game.Price > 1000)
+                throw new NotImplementedException();
+
+
             for (var index = 0; index < _items.Length; ++index)
             {
                 if (_items[index] == null)
@@ -57,12 +64,27 @@ namespace GameManager
 
         public Game Update( int id, Game game )
         {
-            var index = GetIndex(id);
-            var existing = _items[index];
+            //Validate
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+            if (game == null)
+                throw new ArgumentNullException(nameof(game));
+            if (!game.Validate())
+                throw new Exception("Game is invalid.");
 
-            Clone(existing, game);
+            var index = GetIndex(id);
+            if (index < 0)
+                throw new Exception("Game does not exist.");
+
+            //Game names must be unique            
+            var existingIndex = GetIndex(game.Name);
+            if (existingIndex >= 0 && existingIndex != index)
+                throw new Exception("Game must be unique.");
 
             game.Id = id;
+            var existing = _items[index];
+            Clone(existing, game);
+
             return game;
         }
 
@@ -85,6 +107,9 @@ namespace GameManager
 
         public void Delete(int id)
         {
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "ID must be > 0");
+
             var index = GetIndex(id);
             if (index >= 0)
                 _items[index] = null;
@@ -92,6 +117,9 @@ namespace GameManager
 
         public Game Get( int id )
         {
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "ID must be > 0");
+
             var index = GetIndex(id);
             if (index >= 0)
                 return Clone(_items[index]);
@@ -110,6 +138,7 @@ namespace GameManager
 
         private void Clone( Game target, Game source )
         {
+            target.Id = source.Id;
             target.Name = source.Name;
             target.Description = source.Description;
             target.Price = source.Price;
