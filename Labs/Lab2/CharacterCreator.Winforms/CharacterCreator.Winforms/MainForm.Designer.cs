@@ -34,6 +34,8 @@
             this._FileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._CharacterNew = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +53,7 @@
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.characterToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
@@ -85,9 +88,25 @@
             // _HelpAbout
             // 
             this._HelpAbout.Name = "_HelpAbout";
-            this._HelpAbout.Size = new System.Drawing.Size(216, 26);
+            this._HelpAbout.Size = new System.Drawing.Size(125, 26);
             this._HelpAbout.Text = "&About";
             this._HelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
+            // 
+            // characterToolStripMenuItem
+            // 
+            this.characterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._CharacterNew});
+            this.characterToolStripMenuItem.Name = "characterToolStripMenuItem";
+            this.characterToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.characterToolStripMenuItem.Text = "&Character";
+            // 
+            // _CharacterNew
+            // 
+            this._CharacterNew.Name = "_CharacterNew";
+            this._CharacterNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this._CharacterNew.Size = new System.Drawing.Size(216, 26);
+            this._CharacterNew.Text = "&New";
+            this._CharacterNew.Click += new System.EventHandler(this.OnCharacterNew);
             // 
             // MainForm
             // 
@@ -116,6 +135,8 @@
         private System.Windows.Forms.ToolStripMenuItem _FileExit;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _HelpAbout;
+        private System.Windows.Forms.ToolStripMenuItem characterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem _CharacterNew;
     }
 }
 

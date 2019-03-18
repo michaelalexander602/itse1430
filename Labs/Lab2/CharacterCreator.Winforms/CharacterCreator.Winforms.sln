@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterCreator.Winforms", "CharacterCreator.Winforms\CharacterCreator.Winforms.csproj", "{F32CF3D7-F015-4A7F-BCC4-F17EF60CBAF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterCreator", "CharacterCreator\CharacterCreator.csproj", "{AFE14B73-6C79-4AD0-92E0-61D428C37A41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F32CF3D7-F015-4A7F-BCC4-F17EF60CBAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F32CF3D7-F015-4A7F-BCC4-F17EF60CBAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F32CF3D7-F015-4A7F-BCC4-F17EF60CBAF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE14B73-6C79-4AD0-92E0-61D428C37A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE14B73-6C79-4AD0-92E0-61D428C37A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE14B73-6C79-4AD0-92E0-61D428C37A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE14B73-6C79-4AD0-92E0-61D428C37A41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

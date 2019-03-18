@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Michael Alexander
+ * ITSE 1430-21722
+ * 3-16-19
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +31,12 @@ namespace CharacterCreator.Winforms
         private void OnHelpAbout(object sender, EventArgs e)
         {
             var form = new AboutBox();
+            form.ShowDialog();
+        }
+
+        private void OnCharacterNew(object sender, EventArgs e)
+        {
+            var form = new CharacterForm();
             form.ShowDialog();
         }
     }
