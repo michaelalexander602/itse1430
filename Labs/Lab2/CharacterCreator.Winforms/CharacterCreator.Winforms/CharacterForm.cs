@@ -23,7 +23,7 @@ namespace CharacterCreator.Winforms
         {
             base.OnLoad(e);
 
-            //Init UI if editing a game
+            //Init UI if editing a character
             if (Character != null)
                 LoadData(Character);
 
@@ -44,6 +44,39 @@ namespace CharacterCreator.Winforms
             _txtCharisma.Text = character.Charisma.ToString();
         }
 
+        private Character SaveData()
+        {
+            var character = new Character();
+            character.Name = _txtName.Text;
+            character.Race = _comboRace.Text;
+            character.Profession = _comboProfession.Text;
+            character.Strength = ReadInt(_txtStrength);
+            character.Intelligence = ReadInt(_txtIntelligence);
+            character.Agility = ReadInt(_txtAgility);
+            character.Constitution = ReadInt(_txtConstitution);
+            character.Charisma = ReadInt(_txtCharisma);
+
+            return character;
+        }
+
+        private void OnSave(object sender, EventArgs e)
+        {
+            if (!ValidateChildren())
+                return;
+
+            var character = SaveData();
+
+            //if (!character.Validate())
+            //{
+            //    MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
+            //    return;
+            //};
+
+            Character = character;
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
         private int ReadInt(TextBox control)
         {
             if (control.Text.Length == 0)
@@ -53,6 +86,19 @@ namespace CharacterCreator.Winforms
                 return value;
 
             return -1;
+        }
+
+        private void OnValidateName(object sender, CancelEventArgs e)
+        {
+            var tb = sender as TextBox;
+
+            if (tb.Text.Length == 0)
+            {
+                _errors.SetError(tb, "Name is required");
+                e.Cancel = true;
+            }
+            else
+                _errors.SetError(tb, "");
         }
     }
 
