@@ -68,7 +68,7 @@ namespace CharacterCreator.Winforms
 
             //if (!character.Validate())
             //{
-            //    MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
+            //    MessageBox.Show(this, "Character not valid.", "Error", MessageBoxButtons.OK);
             //    return;
             //};
 
@@ -99,6 +99,51 @@ namespace CharacterCreator.Winforms
             }
             else
                 _errors.SetError(tb, "");
+        }
+
+        private void OnValidateStat(object sender, CancelEventArgs e)
+        {
+            var tb = sender as TextBox;
+
+            if (ReadInt(tb) < 1 || ReadInt(tb) > 100)
+            {
+                _errors.SetError(tb, "Stats must be between 1-100");
+                e.Cancel = true;
+            }
+            else
+                _errors.SetError(tb, "");
+        }
+
+        private void OnCancel(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void OnValidateRace(object sender, CancelEventArgs e)
+        {
+            var cb = sender as ComboBox;
+
+            if(cb.Text == "")
+            {
+                _errors.SetError(cb, "You must select a race");
+                e.Cancel = true;
+            }
+            else
+                _errors.SetError(cb, "");
+        }
+
+        private void OnValidateProfession(object sender, CancelEventArgs e)
+        {
+            var cb = sender as ComboBox;
+
+            if (cb.Text == "")
+            {
+                _errors.SetError(cb, "You must select a profession");
+                e.Cancel = true;
+            }
+            else
+                _errors.SetError(cb, "");
         }
     }
 

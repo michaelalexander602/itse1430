@@ -34,10 +34,38 @@ namespace CharacterCreator.Winforms
             form.ShowDialog();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            BindList();
+        }
+
+        private void BindList()
+        {
+            //Bind characters to listbox
+            _listCharacters.Items.Clear();
+            _listCharacters.DisplayMember = nameof(Character.Name);
+
+            _listCharacters.Items.AddRange(_characters.ToArray());
+        }
+
+        private List<Character> _characters = new List<Character>();
+
         private void OnCharacterNew(object sender, EventArgs e)
         {
             var form = new CharacterForm();
-            form.ShowDialog();
+            
+            while(true)
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                _characters.Add(form.Character);
+                break;
+            }
+
+            BindList();
         }
     }
 }

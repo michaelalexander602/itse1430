@@ -82,6 +82,7 @@
             this._comboRace.Name = "_comboRace";
             this._comboRace.Size = new System.Drawing.Size(180, 24);
             this._comboRace.TabIndex = 1;
+            this._comboRace.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateRace);
             // 
             // label2
             // 
@@ -106,6 +107,7 @@
             this._comboProfession.Name = "_comboProfession";
             this._comboProfession.Size = new System.Drawing.Size(180, 24);
             this._comboProfession.TabIndex = 3;
+            this._comboProfession.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateProfession);
             // 
             // label3
             // 
@@ -122,6 +124,7 @@
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(43, 22);
             this._txtStrength.TabIndex = 4;
+            this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateStat);
             // 
             // label4
             // 
@@ -138,6 +141,7 @@
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(43, 22);
             this._txtIntelligence.TabIndex = 5;
+            this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateStat);
             // 
             // label5
             // 
@@ -154,6 +158,7 @@
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(43, 22);
             this._txtAgility.TabIndex = 6;
+            this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateStat);
             // 
             // label6
             // 
@@ -170,6 +175,7 @@
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(43, 22);
             this._txtConstitution.TabIndex = 7;
+            this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateStat);
             // 
             // label7
             // 
@@ -186,6 +192,7 @@
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(43, 22);
             this._txtCharisma.TabIndex = 8;
+            this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateStat);
             // 
             // label8
             // 
@@ -214,6 +221,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "&Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.OnCancel);
             // 
             // _errors
             // 
