@@ -47,10 +47,10 @@ namespace CharacterCreator.Winforms
             _listCharacters.Items.Clear();
             _listCharacters.DisplayMember = nameof(Character.Name);
 
-            _listCharacters.Items.AddRange(_characters.ToArray());
+            _listCharacters.Items.AddRange(_roster.GetAll().ToArray());
         }
 
-        private List<Character> _characters = new List<Character>();
+        private Roster _roster = new Roster();
 
         private void OnCharacterNew(object sender, EventArgs e)
         {
@@ -61,10 +61,48 @@ namespace CharacterCreator.Winforms
                 if (form.ShowDialog(this) != DialogResult.OK)
                     return;
 
-                _characters.Add(form.Character);
+                _roster.Add(form.Character);
                 break;
             }
 
+            BindList();
+        }
+
+        private void OnCharacterEdit(object sender, EventArgs e)
+        {
+            var form = new CharacterForm();
+            form.Text = "Edit Character";
+            var character = _listCharacters.SelectedItem as Character;
+
+            if (character == null)
+                return;
+            form.Character = character;
+
+            while(true)
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                _roster.Update(character.Id, form.Character);
+
+                break;
+            }
+
+            BindList();
+        }
+
+        private void OnCharacterDelete(object sender, EventArgs e)
+        {
+            var selected = _listCharacters.SelectedItem as Character;
+            if (selected == null)
+                return;
+
+            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
+                               "Confirm Delete", MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            _roster.Delete(selected.Id);
             BindList();
         }
     }

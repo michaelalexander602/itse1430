@@ -42,6 +42,7 @@ namespace CharacterCreator.Winforms
             _txtAgility.Text = character.Agility.ToString();
             _txtConstitution.Text = character.Constitution.ToString();
             _txtCharisma.Text = character.Charisma.ToString();
+            _txtDescription.Text = character.Description;
         }
 
         private Character SaveData()
@@ -55,6 +56,7 @@ namespace CharacterCreator.Winforms
             character.Agility = ReadInt(_txtAgility);
             character.Constitution = ReadInt(_txtConstitution);
             character.Charisma = ReadInt(_txtCharisma);
+            character.Description = _txtDescription.Text;
 
             return character;
         }
