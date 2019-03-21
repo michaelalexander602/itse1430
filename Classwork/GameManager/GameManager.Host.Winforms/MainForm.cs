@@ -47,7 +47,7 @@ namespace GameManager.Host.Winforms
             _listGames.DisplayMember = nameof(Game.Name);
 
             //Can use AddRange now that we don't care about null items
-            _listGames.Items.AddRange(_games.GetAll());
+            _listGames.Items.AddRange(_games.GetAll().ToArray());
             //foreach (var game in _games)
             //{
             //    if (game != null)
@@ -112,7 +112,7 @@ namespace GameManager.Host.Winforms
             };
         }
 
-        private GameDatabase _games = new GameDatabase();
+        private IGameDatabase _games = new GameDatabase();
 
         private void OnGameEdit( object sender, EventArgs e )
         {

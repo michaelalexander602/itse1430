@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 
 namespace GameManager.Host.Winforms
@@ -23,11 +24,19 @@ namespace GameManager.Host.Winforms
             var game = SaveData();
 
             //Validate at business level
-            if (!game.Validate())
+            try
+            {
+                new ObjectValidator().Validate(game);
+            } catch (ValidationException)
             {
                 MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
                 return;
             };
+            //if (!game.Validate())
+            //{
+            //    MessageBox.Show(this, "Game not valid.", "Error", MessageBoxButtons.OK);
+            //    return;
+            //};
 
             Game = game;
             DialogResult = DialogResult.OK;
