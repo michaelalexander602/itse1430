@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Michael Alexander
+ * ITSE 1430-21722
+ * 3-16-19
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
