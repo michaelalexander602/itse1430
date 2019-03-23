@@ -54,10 +54,12 @@ namespace CharacterCreator.Winforms
 
         private void OnCharacterNew(object sender, EventArgs e)
         {
+            // display UI
             var form = new CharacterForm();
             
             while(true)
             {
+                // add new character
                 if (form.ShowDialog(this) != DialogResult.OK)
                     return;
 
@@ -70,14 +72,19 @@ namespace CharacterCreator.Winforms
 
         private void OnCharacterEdit(object sender, EventArgs e)
         {
+            // display UI
             var form = new CharacterForm();
+
+            // change form title
             form.Text = "Edit Character";
+
             var character = _listCharacters.SelectedItem as Character;
 
             if (character == null)
                 return;
             form.Character = character;
 
+            // update list with new character
             while(true)
             {
                 if (form.ShowDialog(this) != DialogResult.OK)
@@ -93,10 +100,12 @@ namespace CharacterCreator.Winforms
 
         private void OnCharacterDelete(object sender, EventArgs e)
         {
+            //Get selected character, if any
             var selected = _listCharacters.SelectedItem as Character;
             if (selected == null)
                 return;
 
+            //Display confirmation
             if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
                                "Confirm Delete", MessageBoxButtons.YesNo,
                                MessageBoxIcon.Question) != DialogResult.Yes)
