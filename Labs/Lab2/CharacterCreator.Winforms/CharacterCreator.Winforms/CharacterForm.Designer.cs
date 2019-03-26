@@ -48,12 +48,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            this._txtDescription = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // _txtName
             // 
-            this._txtName.Location = new System.Drawing.Point(113, 41);
+            this._txtName.Location = new System.Drawing.Point(113, 23);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(180, 22);
             this._txtName.TabIndex = 0;
@@ -62,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 44);
+            this.label1.Location = new System.Drawing.Point(56, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 12;
@@ -78,16 +80,16 @@
             "Gnome",
             "Half Elf",
             "Human"});
-            this._comboRace.Location = new System.Drawing.Point(113, 69);
+            this._comboRace.Location = new System.Drawing.Point(113, 51);
             this._comboRace.Name = "_comboRace";
-            this._comboRace.Size = new System.Drawing.Size(180, 24);
+            this._comboRace.Size = new System.Drawing.Size(114, 24);
             this._comboRace.TabIndex = 1;
             this._comboRace.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateRace);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 72);
+            this.label2.Location = new System.Drawing.Point(60, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 17);
             this.label2.TabIndex = 13;
@@ -103,16 +105,16 @@
             "Priest",
             "Rogue",
             "Wizard"});
-            this._comboProfession.Location = new System.Drawing.Point(113, 99);
+            this._comboProfession.Location = new System.Drawing.Point(113, 81);
             this._comboProfession.Name = "_comboProfession";
-            this._comboProfession.Size = new System.Drawing.Size(180, 24);
+            this._comboProfession.Size = new System.Drawing.Size(114, 24);
             this._comboProfession.TabIndex = 3;
             this._comboProfession.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateProfession);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 102);
+            this.label3.Location = new System.Drawing.Point(26, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 17);
             this.label3.TabIndex = 5;
@@ -120,7 +122,7 @@
             // 
             // _txtStrength
             // 
-            this._txtStrength.Location = new System.Drawing.Point(113, 129);
+            this._txtStrength.Location = new System.Drawing.Point(113, 111);
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(43, 22);
             this._txtStrength.TabIndex = 4;
@@ -129,7 +131,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 132);
+            this.label4.Location = new System.Drawing.Point(39, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 17);
             this.label4.TabIndex = 7;
@@ -137,7 +139,7 @@
             // 
             // _txtIntelligence
             // 
-            this._txtIntelligence.Location = new System.Drawing.Point(113, 157);
+            this._txtIntelligence.Location = new System.Drawing.Point(113, 139);
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(43, 22);
             this._txtIntelligence.TabIndex = 5;
@@ -146,7 +148,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 160);
+            this.label5.Location = new System.Drawing.Point(22, 142);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 17);
             this.label5.TabIndex = 9;
@@ -154,7 +156,7 @@
             // 
             // _txtAgility
             // 
-            this._txtAgility.Location = new System.Drawing.Point(113, 185);
+            this._txtAgility.Location = new System.Drawing.Point(113, 167);
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(43, 22);
             this._txtAgility.TabIndex = 6;
@@ -163,7 +165,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 188);
+            this.label6.Location = new System.Drawing.Point(56, 170);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 17);
             this.label6.TabIndex = 11;
@@ -171,7 +173,7 @@
             // 
             // _txtConstitution
             // 
-            this._txtConstitution.Location = new System.Drawing.Point(113, 213);
+            this._txtConstitution.Location = new System.Drawing.Point(113, 195);
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(43, 22);
             this._txtConstitution.TabIndex = 7;
@@ -180,7 +182,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(22, 216);
+            this.label7.Location = new System.Drawing.Point(19, 198);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(82, 17);
             this.label7.TabIndex = 13;
@@ -188,7 +190,7 @@
             // 
             // _txtCharisma
             // 
-            this._txtCharisma.Location = new System.Drawing.Point(113, 241);
+            this._txtCharisma.Location = new System.Drawing.Point(113, 223);
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(43, 22);
             this._txtCharisma.TabIndex = 8;
@@ -197,7 +199,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 244);
+            this.label8.Location = new System.Drawing.Point(34, 226);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 17);
             this.label8.TabIndex = 15;
@@ -205,7 +207,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(113, 302);
+            this.button1.Location = new System.Drawing.Point(113, 331);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -215,7 +217,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(194, 302);
+            this.button2.Location = new System.Drawing.Point(194, 331);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -228,11 +230,30 @@
             this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errors.ContainerControl = this;
             // 
+            // _txtDescription
+            // 
+            this._txtDescription.Location = new System.Drawing.Point(113, 252);
+            this._txtDescription.Multiline = true;
+            this._txtDescription.Name = "_txtDescription";
+            this._txtDescription.Size = new System.Drawing.Size(180, 57);
+            this._txtDescription.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 255);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(79, 17);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Description";
+            // 
             // CharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 396);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this._txtDescription);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
@@ -251,7 +272,12 @@
             this.Controls.Add(this._comboRace);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._txtName);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(376, 443);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(376, 443);
             this.Name = "CharacterForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Character";
             ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
@@ -281,5 +307,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ErrorProvider _errors;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox _txtDescription;
     }
 }
