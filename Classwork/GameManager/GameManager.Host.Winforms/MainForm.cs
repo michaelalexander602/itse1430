@@ -17,7 +17,7 @@ namespace GameManager.Host.Winforms
             InitializeComponent();
 
             //LoadUI();
-        }
+        }    
 
         private void OnFileExit( object sender, EventArgs e )
         {
@@ -112,7 +112,7 @@ namespace GameManager.Host.Winforms
             };
         }
 
-        private IGameDatabase _games = new GameDatabase();
+        private IGameDatabase _games = new MemoryGameDatabase();
 
         private void OnGameEdit( object sender, EventArgs e )
         {

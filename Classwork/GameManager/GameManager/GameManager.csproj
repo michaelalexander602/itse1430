@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="MemoryGameDatabase.cs" />
     <Compile Include="GameDatabase.cs" />
     <Compile Include="IGameDatabase.cs" />
     <Compile Include="ObjectValidator.cs" />
