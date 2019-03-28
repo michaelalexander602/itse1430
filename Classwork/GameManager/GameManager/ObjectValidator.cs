@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GameManager
 {
-    public class ObjectValidator
+    public static class ObjectValidator
     {
-        public void Validate( IValidatableObject value )
+        public static void Validate( IValidatableObject value )
         {
             Validator.ValidateObject(value, new ValidationContext(value));
         }

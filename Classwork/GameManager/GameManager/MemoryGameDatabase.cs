@@ -13,20 +13,6 @@ namespace GameManager
 {
     public class MemoryGameDatabase : GameDatabase
     {
-        public MemoryGameDatabase()
-        {
-            //Collection initializer
-            var games = new[]
-                {
-                    new Game() { Name = "DOOM", Description = "Space Marine", Price = 49.99M },
-                    new Game() { Name = "Oblivion", Description = "Medieval", Price = 89.99M },
-                    new Game() { Name = "Fallout 76", Description = "Failed MMO", Price = 0.01M }
-                };
-
-            foreach (var game in games)
-                AddCore(game);
-        }
-
         protected override Game AddCore( Game game )
         {
             game.Id = ++_nextId;
