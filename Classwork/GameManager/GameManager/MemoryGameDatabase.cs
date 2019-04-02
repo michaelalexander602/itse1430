@@ -41,8 +41,10 @@ namespace GameManager
         protected override IEnumerable<Game> GetAllCore()
         {
             //Use iterator
-            foreach (var item in _items)
-                yield return Clone(item);
+            //foreach (var item in _items)
+            //    yield return Clone(item);
+
+            return _items.Select(Clone);
         }
 
         protected override Game UpdateCore( int id, Game game )
@@ -76,12 +78,32 @@ namespace GameManager
 
         private int GetIndex( int id )
         {
-            for (var index = 0; index < _items.Count; ++index)
-                if (_items[index]?.Id == id)
-                    return index;
+            //_items = all games
+            // .Where = filters down to only those matching IsId
+            // .FirstOrDefault = returns first of filtered items, if any
+            var game = _items.Where(g => g.Id == id).FirstOrDefault();
+
+            //Demoing anonymous type
+            //var games = from g in _items
+            //            where g.Id == id
+            //            select new { Id = g.Id, Name = g.Name };            
+            //var game = games.FirstOrDefault();   
+
+            if (game != null)
+                return _items.IndexOf(game);
+
+            //Forget this
+            //for (var index = 0; index < _items.Count; ++index)
+            //    if (_items[index]?.Id == id)
+            //        return index;
 
             return -1;
         }
+
+        //private bool IsId( Game game )
+        //{
+        //    return game.Id == id;
+        //}
 
         //Arrays are so 90s
         //private readonly Game[] _items = new Game[100];
