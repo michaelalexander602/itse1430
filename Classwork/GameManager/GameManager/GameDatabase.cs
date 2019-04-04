@@ -63,7 +63,7 @@ namespace GameManager
             ObjectValidator.Validate(game);
 
             var existing = GetCore(id);
-            if (existing != null)
+            if (existing == null)
                 throw new Exception("Game does not exist.");
 
             //Game names must be unique            

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GameManager.FileSystem;
 
 namespace GameManager.Host.Winforms
 {
@@ -135,7 +136,7 @@ namespace GameManager.Host.Winforms
             };
         }
 
-        private IGameDatabase _games = new MemoryGameDatabase();
+        private IGameDatabase _games = new FileGameDatabase("games.dat");
 
         private void OnGameEdit( object sender, EventArgs e )
         {
