@@ -9,9 +9,9 @@ namespace ContactManager.Business
     interface IContactDatabase
     {
         Contact Add(Contact contact);
-        Contact Get(string name);
+        Contact Get(int id);
         IEnumerable<Contact> GetAll();
-        void Remove(string name);
-        Contact Update(Contact contact);
+        void Remove(int id);
+        Contact Update(int id, Contact contact);
     }
 }

@@ -8,31 +8,106 @@ namespace ContactManager.Business
 {
     public class ContactDatabase : IContactDatabase
     {
+        private readonly List<Contact> _items = new List<Contact>();
+        private int _nextId = 0;
+
         public Contact Add(Contact contact)
         {
-            throw new NotImplementedException();
+            if (contact == null)
+                throw new ArgumentNullException(nameof(contact));
+
+            //contact names must be unique
+            var existing = FindByName(contact.Name);
+            if (existing != null)
+                throw new Exception("Contact must be unique.");
+
+            contact.Id = ++_nextId;
+            _items.Add(Clone(contact));
+
+            return contact;
         }
 
-        public Contact Get(string name)
+        public Contact Get(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+
+            var index = GetIndex(id);
+            if (index >= 0)
+                return Clone(_items[index]);
+
+            return null;
         }
 
         public IEnumerable<Contact> GetAll()
         {
-            throw new NotImplementedException();
+            return _items.Select(Clone);
         }
 
-        public void Remove(string name)
+        public void Remove(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+
+            var index = GetIndex(id);
+            if (index >= 0)
+                _items.RemoveAt(index);
         }
 
-        public Contact Update(Contact contact)
+        public Contact Update(int id, Contact contact)
         {
-            throw new NotImplementedException();
+            //Validate
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
+            if (contact == null)
+                throw new ArgumentNullException(nameof(contact));
+
+            var existing = Get(id);
+            if (existing == null)
+                throw new Exception("Contact does not exist.");
+
+            //Game names must be unique            
+            var sameName = FindByName(contact.Name);
+            if (sameName != null && sameName.Id != id)
+                throw new Exception("Contact must be unique.");
+
+            var index = GetIndex(id);
+
+            contact.Id = id;
+            existing = _items[index];
+            Clone(existing, contact);
+
+            return contact;
         }
 
-        private readonly List<Contact> _items = new List<Contact>();
+        protected virtual Contact FindByName(string name)
+        {
+            return (from contact in GetAll()
+                    where String.Compare(contact.Name, name, true) == 0
+                    select contact).FirstOrDefault();
+        }
+
+        private Contact Clone(Contact contact)
+        {
+            var newContact = new Contact();
+            Clone(newContact, contact);
+
+            return newContact;
+        }
+
+        private void Clone(Contact target, Contact source)
+        {
+            target.Id = source.Id;
+            target.Name = source.Name;
+            target.Email = source.Email;
+        }
+
+        private int GetIndex(int id)
+        {
+            var game = _items.Where(g => g.Id == id).FirstOrDefault(); 
+            if (game != null)
+                return _items.IndexOf(game);
+            return -1;
+        }
     }
 }

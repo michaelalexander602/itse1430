@@ -8,6 +8,9 @@ namespace ContactManager.Business
 {
     public class Contact
     {
+        /// <summary>Gets or sets the unique ID of the game.</summary>
+        public int Id { get; set; }
+
         public string Name
         {
             get { return _name ?? ""; }
