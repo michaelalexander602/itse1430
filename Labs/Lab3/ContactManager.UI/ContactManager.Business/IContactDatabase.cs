@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactManager.Business
 {
-    interface IContactDatabase
+    public interface IContactDatabase
     {
         Contact Add(Contact contact);
         Contact Get(int id);

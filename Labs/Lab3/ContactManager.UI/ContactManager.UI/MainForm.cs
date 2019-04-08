@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace ContactManager.UI
 {
-    public partial class ContactManager : Form
+    public partial class MainForm : Form
     {
-        public ContactManager()
+        
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -26,6 +27,11 @@ namespace ContactManager.UI
         {
             var form = new AboutBox();
             form.ShowDialog();
+        }
+
+        private void OnContactsAdd(object sender, EventArgs e)
+        {
+            var form = new ContactForm();
         }
     }
 }
