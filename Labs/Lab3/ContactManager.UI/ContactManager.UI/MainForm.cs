@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ContactManager.Business;
 
 namespace ContactManager.UI
 {
@@ -33,5 +34,7 @@ namespace ContactManager.UI
         {
             var form = new ContactForm();
         }
+
+        private IContactDatabase _contacts = new ContactDatabase();
     }
 }
