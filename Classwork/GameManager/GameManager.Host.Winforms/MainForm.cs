@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameManager.FileSystem;
+using GameManager.Sql;
 
 namespace GameManager.Host.Winforms
 {
@@ -37,6 +39,10 @@ namespace GameManager.Host.Winforms
         protected override void OnLoad( EventArgs e )
         {
             base.OnLoad(e);
+
+            //Load connection string from config
+            var connString = ConfigurationManager.ConnectionStrings["database"];
+            _games = new SqlGameDatabase(connString.ConnectionString);
 
             // seed if database is empty
             var games = _games.GetAll();
@@ -136,7 +142,7 @@ namespace GameManager.Host.Winforms
             };
         }
 
-        private IGameDatabase _games = new FileGameDatabase("games.dat");
+        private IGameDatabase _games;
 
         private void OnGameEdit( object sender, EventArgs e )
         {
