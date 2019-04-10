@@ -33,6 +33,15 @@ namespace ContactManager.UI
         private void OnContactsAdd(object sender, EventArgs e)
         {
             var form = new ContactForm();
+            form.Text = "New Contact";
+
+            while(true)
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+
+            }
         }
 
         private IContactDatabase _contacts = new ContactDatabase();
