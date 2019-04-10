@@ -40,10 +40,63 @@ namespace ContactManager.UI
                 if (form.ShowDialog(this) != DialogResult.OK)
                     return;
 
-
+                try
+                {
+                    _contacts.Add(form.Contact);
+                    break;
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message, "Name must be unique.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }  
             }
+
+            BindList();
+        }
+
+        private void BindList()
+        {
+            _listContacts.Items.Clear();
+            _listContacts.DisplayMember = nameof(Contact.Name);
+
+            var items = _contacts.GetAll();
+            items = items.OrderBy(GetName);
+
+            _listContacts.Items.AddRange(_contacts.GetAll().ToArray());
+        }
+
+        private string GetName(Contact contact)
+        {
+            return contact.Name;
         }
 
         private IContactDatabase _contacts = new ContactDatabase();
+
+        private void OnContactsSendMessage(object sender, EventArgs e)
+        {
+            var form = new MessageForm();
+
+            var contact = _listContacts.SelectedItem as Contact;
+            form.Contact = contact;
+
+            if (contact == null)
+                return;
+
+            while (true)
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                //try
+                //{
+                //    //UpdateGame(game, form.Game);            
+                //    _games.Update(game.Id, form.Game);
+                //    break;
+                //}
+                //catch (Exception ex)
+                //{
+                //    DisplayError(ex);
+                //};
+            };
+        }
     }
 }
