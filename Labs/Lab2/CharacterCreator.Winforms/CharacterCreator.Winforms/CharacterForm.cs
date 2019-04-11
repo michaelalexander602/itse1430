@@ -35,7 +35,7 @@ namespace CharacterCreator.Winforms
             if (Character != null)
                 LoadData(Character);
 
-            //ValidateChildren();
+            ValidateChildren();
         }
 
         //Loads UI with character

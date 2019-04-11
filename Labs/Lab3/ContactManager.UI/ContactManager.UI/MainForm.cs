@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactManager.Business;
+using Message = ContactManager.Business.Message;
 
 namespace ContactManager.UI
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form , IMessageService
     {
         
         public MainForm()
@@ -97,6 +98,11 @@ namespace ContactManager.UI
                 //    DisplayError(ex);
                 //};
             };
+        }
+
+        public void Send(Message message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -33,11 +33,13 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._listContacts = new System.Windows.Forms.ListBox();
-            this.sendMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this._listMessages = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,9 +84,16 @@
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Insert;
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.addToolStripMenuItem.Text = "&Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.OnContactsAdd);
+            // 
+            // sendMessageToolStripMenuItem
+            // 
+            this.sendMessageToolStripMenuItem.Name = "sendMessageToolStripMenuItem";
+            this.sendMessageToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.sendMessageToolStripMenuItem.Text = "&Send Message";
+            this.sendMessageToolStripMenuItem.Click += new System.EventHandler(this.OnContactsSendMessage);
             // 
             // helpToolStripMenuItem
             // 
@@ -111,13 +120,6 @@
             this._listContacts.Size = new System.Drawing.Size(160, 340);
             this._listContacts.TabIndex = 1;
             // 
-            // sendMessageToolStripMenuItem
-            // 
-            this.sendMessageToolStripMenuItem.Name = "sendMessageToolStripMenuItem";
-            this.sendMessageToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.sendMessageToolStripMenuItem.Text = "&Send Message";
-            this.sendMessageToolStripMenuItem.Click += new System.EventHandler(this.OnContactsSendMessage);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -127,11 +129,31 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Contacts";
             // 
+            // _listMessages
+            // 
+            this._listMessages.FormattingEnabled = true;
+            this._listMessages.ItemHeight = 16;
+            this._listMessages.Location = new System.Drawing.Point(221, 71);
+            this._listMessages.Name = "_listMessages";
+            this._listMessages.Size = new System.Drawing.Size(540, 340);
+            this._listMessages.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(218, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Messages";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this._listMessages);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._listContacts);
             this.Controls.Add(this.menuStrip1);
@@ -156,6 +178,8 @@
         private System.Windows.Forms.ListBox _listContacts;
         private System.Windows.Forms.ToolStripMenuItem sendMessageToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox _listMessages;
+        private System.Windows.Forms.Label label2;
     }
 }
 
