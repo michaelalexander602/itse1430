@@ -18,6 +18,8 @@ CREATE PROCEDURE [dbo].[UpdateGame]
     @price MONEY,
 	@description NVARCHAR(MAX)
 AS BEGIN
+    SET NOCOUNT ON;
+
     SET @name = LTRIM(RTRIM(ISNULL(@name, '')))
             
     -- Validate

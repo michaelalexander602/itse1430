@@ -9,6 +9,7 @@
 CREATE PROCEDURE [dbo].[DeleteGame]
 	@id INT
 AS BEGIN
-	
+	SET NOCOUNT ON;
+
     DELETE FROM Games WHERE Id = @id
 END

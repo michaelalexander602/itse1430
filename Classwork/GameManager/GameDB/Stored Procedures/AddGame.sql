@@ -17,6 +17,8 @@ CREATE PROCEDURE [dbo].[AddGame]
     @price MONEY = 0,
 	@description NVARCHAR(MAX) = NULL
 AS BEGIN
+    SET NOCOUNT ON;
+
     SET @name = lTRIM(RTRIM(ISNULL(@name, '')))
 
     -- Validate
@@ -37,5 +39,5 @@ AS BEGIN
     INSERT INTO Games (Name, Description, Price, Owned, Completed) 
         VALUES (@name, @description, @price, @owned, @completed)
 
-    RETURN SCOPE_IDENTITY()
+    SELECT SCOPE_IDENTITY()
 END
