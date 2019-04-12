@@ -8,8 +8,10 @@ namespace ContactManager.Business
 {
     public class Message
     {
+        /// <summary>Gets or sets the targeted contact.</summary>
         public Contact Contact { get; set; }
 
+        /// <summary>Gets or sets the subject line of the message.</summary>
         public string Subject
         {
             get { return _subject ?? ""; }
@@ -17,6 +19,7 @@ namespace ContactManager.Business
         }
         private string _subject = "";
 
+        /// <summary>Gets or sets the main body of the message.</summary>
         public string Body
         {
             get { return _body ?? ""; }
@@ -24,6 +27,7 @@ namespace ContactManager.Business
         }
         private string _body = "";
 
+        /// <summary>Returns all the message info in a single string.</summary>
         public override string ToString()
         {
             return "To: " + Contact.Name + " - " + Contact.Email + " | Subject: "

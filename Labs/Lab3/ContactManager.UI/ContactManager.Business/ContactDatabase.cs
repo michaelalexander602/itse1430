@@ -11,6 +11,7 @@ namespace ContactManager.Business
         private readonly List<Contact> _items = new List<Contact>();
         private int _nextId = 0;
 
+        /// <summary>adds a contact to the database.</summary>
         public Contact Add(Contact contact)
         {
             if (contact == null)
@@ -27,6 +28,7 @@ namespace ContactManager.Business
             return contact;
         }
 
+        /// <summary>gets a specified contact by its id.</summary>
         public Contact Get(int id)
         {
             if (id <= 0)
@@ -44,6 +46,7 @@ namespace ContactManager.Business
             return _items.Select(Clone);
         }
 
+        /// <summary>removes a specified contact by its id.</summary>
         public void Remove(int id)
         {
             if (id <= 0)
@@ -54,6 +57,7 @@ namespace ContactManager.Business
                 _items.RemoveAt(index);
         }
 
+        /// <summary>replaces an existing contact</summary>
         public Contact Update(int id, Contact contact)
         {
             //Validate

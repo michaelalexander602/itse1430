@@ -8,9 +8,10 @@ namespace ContactManager.Business
 {
     public class Contact
     {
-        /// <summary>Gets or sets the unique ID of the game.</summary>
+        /// <summary>Gets or sets the unique ID of the contact.</summary>
         public int Id { get; set; }
 
+        /// <summary>Gets or sets the name of the contact.</summary>
         public string Name
         {
             get { return _name ?? ""; }
@@ -18,6 +19,7 @@ namespace ContactManager.Business
         }
         private string _name = "";
 
+        /// <summary>Gets or sets the email of the contact.</summary>
         public string Email
         {
             get { return _email ?? ""; }

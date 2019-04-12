@@ -33,6 +33,7 @@ namespace ContactManager.UI
 
         private void OnContactsAdd(object sender, EventArgs e)
         {
+            // display UI
             var form = new ContactForm();
             form.Text = "New Contact";
 
@@ -41,6 +42,7 @@ namespace ContactManager.UI
                 if (form.ShowDialog(this) != DialogResult.OK)
                     return;
 
+                // add new contact
                 try
                 {
                     _contacts.Add(form.Contact);
@@ -56,6 +58,7 @@ namespace ContactManager.UI
 
         private void BindContactList()
         {
+            // displays contacts on UI
             _listContacts.Items.Clear();
             _listContacts.DisplayMember = nameof(Contact.Name);
 
@@ -72,8 +75,10 @@ namespace ContactManager.UI
 
         private void OnContactsSendMessage(object sender, EventArgs e)
         {
+            // display UI
             var form = new MessageForm();
 
+            // gets contact onject from UI list
             var contact = _listContacts.SelectedItem as Contact;
             form.Contact = contact;
 
@@ -85,6 +90,7 @@ namespace ContactManager.UI
                 if (form.ShowDialog(this) != DialogResult.OK)
                     return;
 
+                // add message from user input to the list 
                 _messages.Add(form.Message);
                 break;
             };
@@ -94,6 +100,7 @@ namespace ContactManager.UI
 
         public void Send(Message message)
         {
+            // displays list of messages to the UI
             _listMessages.Items.Clear();
             _listMessages.DisplayMember = nameof(Message.ToString);
 
@@ -102,9 +109,12 @@ namespace ContactManager.UI
 
         private void OnContactsEdit(object sender, EventArgs e)
         {
+            // display UI
             var form = new ContactForm();
+            // change from title
             form.Text = "Edit Contact";
 
+            // get selected contact, if any
             var contact = _listContacts.SelectedItem as Contact;
             if (contact == null)
                 return;
