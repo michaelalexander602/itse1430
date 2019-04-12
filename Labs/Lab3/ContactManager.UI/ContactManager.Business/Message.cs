@@ -30,7 +30,7 @@ namespace ContactManager.Business
         /// <summary>Returns all the message info in a single string.</summary>
         public override string ToString()
         {
-            return "To: " + Contact.Name + " - " + Contact.Email + " | Subject: "
+            return "To: " + Contact.Email + " | Subject: "
                     + Subject + " | Body: " + Body;
         }
     }
