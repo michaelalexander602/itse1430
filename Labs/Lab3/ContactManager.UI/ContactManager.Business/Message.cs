@@ -26,8 +26,8 @@ namespace ContactManager.Business
 
         public override string ToString()
         {
-            return "To: " + Contact.Name + " - " + Contact.Email + "  Subject:"
-                    + Subject + "  Body: " + Body;
+            return "To: " + Contact.Name + " - " + Contact.Email + " | Subject: "
+                    + Subject + " | Body: " + Body;
         }
     }
 }
