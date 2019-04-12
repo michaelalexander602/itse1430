@@ -51,18 +51,15 @@ namespace ContactManager.UI
                 }  
             }
 
-            BindList();
+            BindContactList();
         }
 
-        private void BindList()
+        private void BindContactList()
         {
             _listContacts.Items.Clear();
             _listContacts.DisplayMember = nameof(Contact.Name);
 
-            var items = _contacts.GetAll();
-            items = items.OrderBy(GetName);
-
-            _listContacts.Items.AddRange(_contacts.GetAll().ToArray());
+            _listContacts.Items.AddRange(_contacts.GetAll().OrderBy(GetName).ToArray());
         }
 
         private string GetName(Contact contact)
@@ -71,6 +68,7 @@ namespace ContactManager.UI
         }
 
         private IContactDatabase _contacts = new ContactDatabase();
+        private List<Message> _messages = new List<Message>();
 
         private void OnContactsSendMessage(object sender, EventArgs e)
         {
@@ -87,22 +85,17 @@ namespace ContactManager.UI
                 if (form.ShowDialog(this) != DialogResult.OK)
                     return;
 
-                //try
-                //{
-                //    //UpdateGame(game, form.Game);            
-                //    _games.Update(game.Id, form.Game);
-                //    break;
-                //}
-                //catch (Exception ex)
-                //{
-                //    DisplayError(ex);
-                //};
+                _messages.Add(form.Message);
+                break;
             };
         }
 
         public void Send(Message message)
         {
-            throw new NotImplementedException();
+            _listMessages.Items.Clear();
+            _listMessages.DisplayMember = nameof(Message.Subject);
+
+            _listMessages.Items.AddRange(_messages.ToArray());
         }
     }
 }

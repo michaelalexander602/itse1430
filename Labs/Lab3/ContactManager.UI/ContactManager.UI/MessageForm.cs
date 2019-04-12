@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Message = ContactManager.Business.Message;
 
 namespace ContactManager.UI
 {
@@ -19,6 +20,7 @@ namespace ContactManager.UI
         }
 
         public Contact Contact { get; set; }
+        public Message Message { get; set; }
 
         protected override void OnLoad(EventArgs e)
         {
@@ -44,7 +46,23 @@ namespace ContactManager.UI
 
         private void OnSend(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
 
+            var message = SaveData();
+
+            Message = message;
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private Message SaveData()
+        {
+            var message = new Message();
+            message.Subject = _txtSubject.Text;
+            message.Body = _txtBody.Text;
+
+            return message;
         }
 
         private void OnCancel(object sender, EventArgs e)
