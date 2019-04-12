@@ -61,6 +61,7 @@ namespace ContactManager.UI
             var message = new Message();
             message.Subject = _txtSubject.Text;
             message.Body = _txtBody.Text;
+            message.Contact = Contact;
 
             return message;
         }

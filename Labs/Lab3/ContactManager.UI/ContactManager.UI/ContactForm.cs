@@ -20,6 +20,17 @@ namespace ContactManager.UI
 
         public Contact Contact { get; set; }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            //Initialize textboxes if editing a contact
+            if (Contact != null)
+                LoadData(Contact);
+
+            ValidateChildren();
+        }
+
         private void OnSave(object sender, EventArgs e)
         {
             if (!ValidateChildren())
@@ -39,6 +50,12 @@ namespace ContactManager.UI
             contact.Email = _txtEmail.Text;
 
             return contact;
+        }
+
+        private void LoadData(Contact contact)
+        {
+            _txtName.Text = contact.Name;
+            _txtEmail.Text = contact.Email;
         }
 
         private void OnCancel(object sender, EventArgs e)

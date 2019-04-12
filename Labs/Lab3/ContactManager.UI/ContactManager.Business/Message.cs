@@ -23,5 +23,11 @@ namespace ContactManager.Business
             set { _body = value ?? ""; }
         }
         private string _body = "";
+
+        public override string ToString()
+        {
+            return "To: " + Contact.Name + " - " + Contact.Email + "  Subject:"
+                    + Subject + "  Body: " + Body;
+        }
     }
 }

@@ -88,14 +88,71 @@ namespace ContactManager.UI
                 _messages.Add(form.Message);
                 break;
             };
+
+            Send(form.Message);
         }
 
         public void Send(Message message)
         {
             _listMessages.Items.Clear();
-            _listMessages.DisplayMember = nameof(Message.Subject);
+            _listMessages.DisplayMember = nameof(Message.ToString);
 
             _listMessages.Items.AddRange(_messages.ToArray());
+        }
+
+        private void OnContactsEdit(object sender, EventArgs e)
+        {
+            var form = new ContactForm();
+            form.Text = "Edit Contact";
+
+            var contact = _listContacts.SelectedItem as Contact;
+            if (contact == null)
+                return;
+
+            form.Contact = contact;
+
+            while (true)
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    _contacts.Update(contact.Id, form.Contact);
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message, "Name must be unique.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            BindContactList();
+        }
+
+        private void OnContactsDelete(object sender, EventArgs e)
+        {
+            //Get selected contact, if any
+            var selected = _listContacts.SelectedItem as Contact;
+            if (selected == null)
+                return;
+
+            //Display confirmation message
+            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
+                               "Confirm Delete", MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            try
+            {
+                _contacts.Remove(selected.Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Contact not found.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+            BindContactList();
         }
     }
 }
