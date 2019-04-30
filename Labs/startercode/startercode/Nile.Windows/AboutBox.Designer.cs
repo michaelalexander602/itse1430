@@ -1,4 +1,4 @@
-﻿namespace GameManager.Host.Winforms
+﻿namespace Nile.Windows
 {
     partial class AboutBox
     {
@@ -10,7 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        protected override void Dispose( bool disposing )
+        protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
