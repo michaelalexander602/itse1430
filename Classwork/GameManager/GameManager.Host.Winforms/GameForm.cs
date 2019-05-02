@@ -23,9 +23,10 @@ namespace GameManager.Host.Winforms
 
             var game = SaveData();
 
-            //Validate at business level
+            //Validate at business level using IValidatableObject
             try
             {
+                //new ObjectValidator().Validate(game);
                 ObjectValidator.Validate(game);
             } catch (ValidationException)
             {
@@ -110,11 +111,10 @@ namespace GameManager.Host.Winforms
 
             if (tb.Text.Length == 0)
             {
-                _errors.SetError(tb, "Name is required");
+                _errors.SetError(tb, "Name is required.");
                 e.Cancel = true;
             } else
                 _errors.SetError(tb, "");
-                
         }
 
         private void OnValidatePrice( object sender, System.ComponentModel.CancelEventArgs e )
@@ -124,7 +124,7 @@ namespace GameManager.Host.Winforms
             var price = ReadDecimal(tb);
             if (price < 0)
             {
-                _errors.SetError(tb, "Price must be <= 0");
+                _errors.SetError(tb, "Price must be >= 0.");
                 e.Cancel = true;
             } else
                 _errors.SetError(tb, "");

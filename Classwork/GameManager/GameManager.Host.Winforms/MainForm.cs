@@ -20,7 +20,7 @@ namespace GameManager.Host.Winforms
             InitializeComponent();
 
             //LoadUI();
-        }    
+        }
 
         private void OnFileExit( object sender, EventArgs e )
         {
@@ -44,14 +44,14 @@ namespace GameManager.Host.Winforms
             var connString = ConfigurationManager.ConnectionStrings["database"];
             _games = new SqlGameDatabase(connString.ConnectionString);
 
-            //// seed if database is empty
+            //Seed if database is empty
             //var games = _games.GetAll();
             //if (games.Count() == 0)
             //    //SeedDatabase.Seed(_games);
             //    _games.Seed();
 
             BindList();
-        } 
+        }
 
         private void BindList()
         {
@@ -71,8 +71,8 @@ namespace GameManager.Host.Winforms
             //};
 
             var items = _games.GetAll();
-            items = items.OrderBy(GetName);
-            _listGames.Items.AddRange(_games.GetAll().ToArray());
+            items = items.OrderBy(GetName);            
+            _listGames.Items.AddRange(items.ToArray());
             //foreach (var game in _games)
             //{
             //    if (game != null)
@@ -80,7 +80,7 @@ namespace GameManager.Host.Winforms
             //};
         }
 
-        private string GetName( Game game )
+        private string GetName ( Game game )
         {
             return game.Name;
         }
@@ -193,7 +193,7 @@ namespace GameManager.Host.Winforms
                 _games.Delete(selected.Id);
             } catch (Exception ex)
             {
-                DisplayError(ex);
+                DisplayError(ex);  
             };
             BindList();
         }

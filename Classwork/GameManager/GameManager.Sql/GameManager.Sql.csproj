@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{415F7143-59C4-44BE-92FD-7059A38E2089}</ProjectGuid>
+    <ProjectGuid>{DE2D2DA0-D93C-47BD-A06B-EECBCEDE3DAC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GameManager.Sql</RootNamespace>

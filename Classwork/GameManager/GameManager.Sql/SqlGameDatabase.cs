@@ -10,7 +10,7 @@ namespace GameManager.Sql
 {
     public class SqlGameDatabase : GameDatabase
     {
-        public SqlGameDatabase(string connectionString)
+        public SqlGameDatabase ( string connectionString )
         {
             _connectionString = connectionString;
         }
@@ -28,12 +28,12 @@ namespace GameManager.Sql
                 cmd.CommandText = "AddGame";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                // add parameter 1
+                //Add parameter 1 - long way when you need control over parameter
                 var parameter = new SqlParameter("@name", System.Data.SqlDbType.NVarChar);
                 parameter.Value = game.Name;
                 cmd.Parameters.Add(parameter);
 
-                // add parmeter 2
+                //Add parameter 2 - quick way when you just need type/value
                 cmd.Parameters.AddWithValue("@description", game.Description);
                 cmd.Parameters.AddWithValue("@price", game.Price);
                 cmd.Parameters.AddWithValue("@completed", game.Completed);
@@ -79,10 +79,10 @@ namespace GameManager.Sql
             {
                 var cmd = new SqlCommand("GetGames", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-
+                
                 var da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
-
+                
                 da.Fill(ds);
 
                 //If you wanted to update
@@ -96,10 +96,9 @@ namespace GameManager.Sql
             if (table != null)
             {
                 return from r in table.Rows.OfType<DataRow>()
-                       select new Game()
-                       {
-                           Id = Convert.ToInt32(r[0]),  // ordinal convert
-                           Name = r["Name"].ToString(), // by name convert
+                       select new Game() {
+                           Id = Convert.ToInt32(r[0]),  //Ordinal, convert
+                           Name = r["Name"].ToString(), //By name, convert
                            Description = r.IsNull("description") ? "" : r["description"].ToString(), //handle DB nulls
                            Price = r.Field<decimal>("Price"),
                            Owned = r.Field<bool>("Owned"),
@@ -124,10 +123,8 @@ namespace GameManager.Sql
                 {
                     var gameId = reader.GetInt32(0);
                     if (gameId == id)
-                    {
-                        var ordinal = reader.GetOrdinal("Name");
-
-                        return new Game()
+                    {                        
+                        return new Game() 
                         {
                             Id = gameId,
                             Name = GetString(reader, "Name"),
@@ -143,7 +140,7 @@ namespace GameManager.Sql
             return null;
         }
 
-        private string GetString( IDataReader reader, string name )
+        private string GetString ( IDataReader reader, string name )
         {
             var ordinal = reader.GetOrdinal(name);
 
@@ -164,12 +161,12 @@ namespace GameManager.Sql
                 cmd.CommandText = "UpdateGame";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                // add parameter 1
+                //Add parameter 1 - long way when you need control over parameter
                 var parameter = new SqlParameter("@name", System.Data.SqlDbType.NVarChar);
                 parameter.Value = game.Name;
                 cmd.Parameters.Add(parameter);
 
-                // add parmeter 2
+                //Add parameter 2 - quick way when you just need type/value
                 cmd.Parameters.AddWithValue("@description", game.Description);
                 cmd.Parameters.AddWithValue("@price", game.Price);
                 cmd.Parameters.AddWithValue("@completed", game.Completed);

@@ -23,16 +23,19 @@ namespace GameManager.FileSystem
 
         protected override Game AddCore( Game game )
         {
+            //Load existing games
             var games = GetAllCore().ToList();
 
-            // find largest ID and add 1
+            //Find the largest Id and increment by 1
             if (games.Any())
                 game.Id = games.Max(x => x.Id) + 1;
             else
                 game.Id = 1;
 
+            //Add to list
             games.Add(game);
 
+            //Save the games
             SaveGames(games);
 
             return game;
@@ -43,11 +46,11 @@ namespace GameManager.FileSystem
             var games = GetAllCore().ToList();
 
             var game = games.FirstOrDefault(x => x.Id == id);
-            if(game != null)
+            if (game != null)
             {
                 games.Remove(game);
                 SaveGames(games);
-            }
+            };
         }
 
         protected override IEnumerable<Game> GetAllCore()
@@ -69,8 +72,13 @@ namespace GameManager.FileSystem
             if (!File.Exists(_filename))
                 return null;
 
+            //Streams are very low level
+            //var stream = File.Open();
+            
+            //Must clean up streams and reader/writers
+            //Use a reader/writer - text stream
             using (StreamReader reader = File.OpenText(_filename))
-            {
+            {                
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
@@ -79,16 +87,43 @@ namespace GameManager.FileSystem
                         return game;
                 };
 
+                //NEVER do this
+                //var x = 10l;
+                //reader.Close();
+                //reader.Close();
+                //reader.Dispose();
+
                 return null;
-            }; 
+            };
+
+            #region The Long way
+            //StreamReader reader = null;
+            //try
+            //{
+            //    reader = File.OpenText(_filename);
+            //    while (!reader.EndOfStream)
+            //    {
+            //        var line = reader.ReadLine();
+            //        var game = LoadGame(line);
+            //        if (game.Id == id)
+            //            return game;
+            //    };
+
+            //    return null;
+            //} finally
+            //{
+            //    reader?.Close();
+            //}            
+            #endregion
         }
 
         protected override Game UpdateCore( int id, Game newGame )
         {
             var games = GetAllCore().ToList();
 
+            //Replace old game with new one
             var existing = games.FirstOrDefault(x => x.Id == id);
-            if(existing != null)
+            if (existing != null)
             {
                 games.Remove(existing);
                 newGame.Id = id;
@@ -109,8 +144,7 @@ namespace GameManager.FileSystem
             if (fields.Length != 6)
                 return null;
 
-            return new Game
-            {
+            return new Game {
                 Id = Int32.Parse(fields[0]),
                 Name = fields[1],
                 Description = fields[2],
@@ -125,8 +159,9 @@ namespace GameManager.FileSystem
             return String.Join(",", game.Id, game.Name, game.Description, game.Price, game.Owned, game.Completed);
         }
 
-        private void SaveGames (IEnumerable<Game> games )
+        private void SaveGames( IEnumerable<Game> games )
         {
+            //Use LINQ Luke
             var lines = from game in games
                         select SaveGame(game);
 

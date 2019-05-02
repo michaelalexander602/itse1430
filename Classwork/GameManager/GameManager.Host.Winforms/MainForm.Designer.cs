@@ -84,7 +84,7 @@
             // 
             this._miGameAdd.Name = "_miGameAdd";
             this._miGameAdd.ShortcutKeys = System.Windows.Forms.Keys.Insert;
-            this._miGameAdd.Size = new System.Drawing.Size(180, 22);
+            this._miGameAdd.Size = new System.Drawing.Size(139, 22);
             this._miGameAdd.Text = "&Add";
             this._miGameAdd.Click += new System.EventHandler(this.OnGameAdd);
             // 
@@ -92,20 +92,20 @@
             // 
             this._miGameEdit.Name = "_miGameEdit";
             this._miGameEdit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Insert)));
-            this._miGameEdit.Size = new System.Drawing.Size(180, 22);
+            this._miGameEdit.Size = new System.Drawing.Size(139, 22);
             this._miGameEdit.Text = "&Edit";
             this._miGameEdit.Click += new System.EventHandler(this.OnGameEdit);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
             // 
             // _miGameDelete
             // 
             this._miGameDelete.Name = "_miGameDelete";
             this._miGameDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this._miGameDelete.Size = new System.Drawing.Size(180, 22);
+            this._miGameDelete.Size = new System.Drawing.Size(139, 22);
             this._miGameDelete.Text = "&Delete";
             this._miGameDelete.Click += new System.EventHandler(this.OnGameDelete);
             // 
