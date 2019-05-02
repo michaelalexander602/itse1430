@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GameManager
-{
+{   
     public abstract class GameDatabase : IGameDatabase
     {
         public Game Add( Game game )
@@ -20,6 +20,7 @@ namespace GameManager
                 throw new ArgumentNullException(nameof(game));
 
             //Game must be valid            
+            //new ObjectValidator().Validate(game);
             ObjectValidator.Validate(game);
 
             //Game names must be unique
@@ -60,6 +61,9 @@ namespace GameManager
             if (game == null)
                 throw new ArgumentNullException(nameof(game));
 
+            //var val = new ObjectValidator();
+            
+            //new ObjectValidator().Validate(game);
             ObjectValidator.Validate(game);
 
             var existing = GetCore(id);
@@ -80,6 +84,7 @@ namespace GameManager
 
         protected virtual Game FindByName( string name )
         {
+            //LINQ
             //select
             //from
             //where
@@ -89,7 +94,7 @@ namespace GameManager
                     //orderby game.Name, game.Id descending
                     select game).FirstOrDefault();
 
-            // extension method approach
+            //Extension method equivalent
             //return GetAllCore().Where(game => String.Compare(game.Name, name, true) == 0)
             //            .Select(game => game)
             //            .FirstOrDefault();

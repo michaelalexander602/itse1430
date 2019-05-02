@@ -13,6 +13,8 @@ namespace GameManager.Mvc.Controllers
             return View();
         }
 
+        //public ActionResult about() { return View(); }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

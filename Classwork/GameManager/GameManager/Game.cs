@@ -11,30 +11,37 @@ namespace GameManager
         public int Id { get; set; }
 
         /// <summary>Gets or sets the name of the game.</summary>
+        [Required(AllowEmptyStrings = false)]
         public string Name
         {
-            // expression bodied members
+            //Expression bodied members
             //get { return _name ?? ""; }
             get => _name ?? "";
             //set { _name = value ?? ""; }
             set => _name = value ?? "";
         }
 
-        /// <summary>Gets or sets the description.</summary>
+        /// <summary>Gets or sets the description.</summary>        
+        //[Required]
+        //[Description("Hello")]
+        //[Required, Description("Hello")]
         public string Description
         {
-            get => _description ?? ""; 
-            set => _description = value; 
+            get => _description ?? "";
+            set => _description = value;
         }
 
         /*public bool IsCoolGame
         {
             get { return Price < 59.99M; }
         }*/
-        public bool IsCoolGame => Price < 59.99M; // read only property
+        public bool IsCoolGame => Price < 59.99M;
+
+        //private bool IsCoolGame2 = true;
 
         /// <summary>Gets or sets the price.</summary>
-        public decimal Price { get; set; }
+        [RangeAttribute(0, Double.MaxValue, ErrorMessage = "Price must be >= 0.")]
+        public decimal Price { get; set; }        
 
         /// <summary>Determines if the game is owned.</summary>
         public bool Owned { get; set; } = true;
@@ -47,20 +54,21 @@ namespace GameManager
         //public override string ToString()
         //{
         //    return Name;
-        //}
+        //}        
         public override string ToString() => Name;
-
+        
+        //Not needed anymore but leaving in becase ObjectValidator uses it
         public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
         {
             var items = new List<ValidationResult>();
 
-            //Name is required
-            if (String.IsNullOrEmpty(Name))
-                items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
+            ////Name is required
+            //if (String.IsNullOrEmpty(Name))
+            //    items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
 
             //Price >= 0
-            if (Price < 0)
-                items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
+            //if (Price < 0)
+            //    items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
 
             return items;
         }

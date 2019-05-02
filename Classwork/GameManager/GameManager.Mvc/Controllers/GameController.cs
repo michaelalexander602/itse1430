@@ -4,13 +4,14 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 using GameManager.Sql;
 
 namespace GameManager.Mvc.Controllers
 {
     public class GameController : Controller
     {
-        // GET: Game
+        // GET: Home
         public ActionResult Index()
         {
             var db = GetDatabase();
@@ -28,7 +29,7 @@ namespace GameManager.Mvc.Controllers
             return db;
         }
 
-        public ActionResult Create()
+        public ActionResult Create ()
         {
             return View(new Game());
         }
@@ -43,7 +44,7 @@ namespace GameManager.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit ( int id )
         {
             var db = GetDatabase();
             var game = db.Get(id);
@@ -54,16 +55,16 @@ namespace GameManager.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit (Game model)
+        public ActionResult Edit ( Game model )
         {
             var db = GetDatabase();
 
-            db.Update(model.Id, model);
+            var game = db.Update(model.Id, model);
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete ( int id )
         {
             var db = GetDatabase();
             var game = db.Get(id);
@@ -81,6 +82,11 @@ namespace GameManager.Mvc.Controllers
             db.Delete(model.Id);
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Whatever ( string name, decimal price )
+        {
+            return Redirect("http://www.google.com");
         }
     }
 }

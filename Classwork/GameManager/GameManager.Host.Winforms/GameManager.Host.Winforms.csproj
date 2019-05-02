@@ -101,11 +101,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameManager.FileSystem\GameManager.FileSystem.csproj">
-      <Project>{a9c2f16c-fb04-43e4-a8ae-8ae97a223ddf}</Project>
+      <Project>{1cc9d177-9208-47fc-bc52-7d11f215ce6b}</Project>
       <Name>GameManager.FileSystem</Name>
     </ProjectReference>
     <ProjectReference Include="..\GameManager.Sql\GameManager.Sql.csproj">
-      <Project>{415F7143-59C4-44BE-92FD-7059A38E2089}</Project>
+      <Project>{DE2D2DA0-D93C-47BD-A06B-EECBCEDE3DAC}</Project>
       <Name>GameManager.Sql</Name>
     </ProjectReference>
     <ProjectReference Include="..\GameManager\GameManager.csproj">
