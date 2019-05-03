@@ -25,7 +25,7 @@ namespace Nile.Stores.Sql
                 connection.Open();
 
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "AddGame";
+                cmd.CommandText = "AddProduct";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 var parameter = new SqlParameter("@name", SqlDbType.NVarChar);
@@ -54,7 +54,7 @@ namespace Nile.Stores.Sql
 
             using (var conn = GetConnection())
             {
-                var cmd = new SqlCommand("GetProducts", conn);
+                var cmd = new SqlCommand("GetAllProducts", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 var da = new SqlDataAdapter();
@@ -85,7 +85,7 @@ namespace Nile.Stores.Sql
             using (var conn = GetConnection())
             {
                 var cmd = conn.CreateCommand();
-                cmd.CommandText = "GetProducts";
+                cmd.CommandText = "GetAllProducts";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 conn.Open();
@@ -127,7 +127,7 @@ namespace Nile.Stores.Sql
                 connection.Open();
 
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "DeleteProduct";
+                cmd.CommandText = "RemoveProduct";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@id", id);
@@ -143,7 +143,7 @@ namespace Nile.Stores.Sql
                 connection.Open();
 
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "UpdateGame";
+                cmd.CommandText = "UpdateProduct";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 var parameter = new SqlParameter("@name", SqlDbType.NVarChar);

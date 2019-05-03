@@ -1,7 +1,9 @@
 /*
  * ITSE 1430
  */
+using Nile.Stores.Sql;
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace Nile.Windows
@@ -23,6 +25,7 @@ namespace Nile.Windows
             _gridProducts.AutoGenerateColumns = false;
 
             var connString = ConfigurationManager.ConnectionStrings["ProductDatabase"];
+            _database = new SqlProductDatabase(connString.ConnectionString);
 
             UpdateList();
         }
@@ -165,7 +168,7 @@ namespace Nile.Windows
             }
         }
 
-        private readonly IProductDatabase _database;
+        private IProductDatabase _database;
         #endregion
 
         private void OnHelpAbout(object sender, EventArgs e)
