@@ -73,7 +73,7 @@ namespace Nile.Stores
             if (existing == null)
                 throw new Exception("Product does not exist.");
 
-            //Game names must be unique            
+            //product names must be unique            
             var sameName = FindByName(product.Name);
             if (sameName != null && sameName.Id != product.Id)
                 throw new Exception("Product must be unique.");

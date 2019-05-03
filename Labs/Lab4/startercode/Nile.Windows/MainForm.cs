@@ -22,6 +22,8 @@ namespace Nile.Windows
 
             _gridProducts.AutoGenerateColumns = false;
 
+            var connString = ConfigurationManager.ConnectionStrings["ProductDatabase"];
+
             UpdateList();
         }
 
@@ -163,7 +165,7 @@ namespace Nile.Windows
             }
         }
 
-        private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
+        private readonly IProductDatabase _database;
         #endregion
 
         private void OnHelpAbout(object sender, EventArgs e)
