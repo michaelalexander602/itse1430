@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Nile.Stores
 {
@@ -19,8 +20,11 @@ namespace Nile.Stores
             if (product == null)
                 throw new ArgumentNullException(nameof(product));
 
-            
             Validator.ValidateObject(product, new ValidationContext(product));
+
+            var existing = FindByName(product.Name);
+            if (existing != null)
+                throw new Exception("Product must be unique.");
 
             //Emulate database by storing copy
             return AddCore(product);
@@ -66,8 +70,22 @@ namespace Nile.Stores
 
             //Get existing product
             var existing = GetCore(product.Id);
+            if (existing == null)
+                throw new Exception("Product does not exist.");
+
+            //Game names must be unique            
+            var sameName = FindByName(product.Name);
+            if (sameName != null && sameName.Id != product.Id)
+                throw new Exception("Product must be unique.");
 
             return UpdateCore(existing, product);
+        }
+
+        protected virtual Product FindByName(string name)
+        {
+            return (from product in GetAllCore()
+                    where String.Compare(product.Name, name, true) == 0
+                    select product).FirstOrDefault();
         }
 
         #region Protected Members
