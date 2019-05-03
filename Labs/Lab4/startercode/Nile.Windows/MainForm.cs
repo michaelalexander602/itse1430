@@ -4,6 +4,7 @@
 using Nile.Stores.Sql;
 using System;
 using System.Configuration;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Nile.Windows
@@ -160,12 +161,17 @@ namespace Nile.Windows
         {
             try
             {
-                _bsProducts.DataSource = _database.GetAll();
+                _bsProducts.DataSource = _database.GetAll().OrderBy(GetName);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private string GetName(Product product)
+        {
+            return product.Name;
         }
 
         private IProductDatabase _database;
