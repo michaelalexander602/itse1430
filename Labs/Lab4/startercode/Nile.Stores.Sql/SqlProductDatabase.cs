@@ -100,7 +100,7 @@ namespace Nile.Stores.Sql
                             Id = productId,
                             Name = GetString(reader, "Name"),
                             Description = GetString(reader, "Description"),
-                            Price = reader.GetFieldValue<decimal>(3),
+                            Price = reader.GetFieldValue<decimal>(2),
                             IsDiscontinued = Convert.ToBoolean(reader.GetValue(4)),
                         };
                     };

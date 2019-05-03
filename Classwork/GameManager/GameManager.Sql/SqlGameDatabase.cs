@@ -128,8 +128,8 @@ namespace GameManager.Sql
                         {
                             Id = gameId,
                             Name = GetString(reader, "Name"),
-                            Description = GetString(reader, "Description"),
                             Price = reader.GetFieldValue<decimal>(3),
+                            Description = GetString(reader, "Description"),     
                             Owned = Convert.ToBoolean(reader.GetValue(4)),
                             Completed = Convert.ToBoolean(reader.GetValue(5)),
                         };
